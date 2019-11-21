@@ -1,0 +1,31 @@
+Package: fishgrowbot
+Title: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Nina",
+           family = "Schiettekatte",
+           role = c("aut", "cre"),
+           email = "nina.schiettekatte@gmail.com",
+           comment = c(ORCID = "0000-0002-1925-3484"))
+Description: This package allows for the back-calculation of otolith readings to retrieve size at age information of fishes in a Bayesian framework. Further, it includes a growth model to fit the Von Bertalanffy growth curve to length at age data from back-calculations.
+License: GPL-2 
+Encoding: UTF-8
+LazyData: true
+Biarch: true
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    ggplot2 (>= 3.1.0),
+    methods,
+    dplyr,
+    Rcpp (>= 0.12.0),
+    rstan (>= 2.18.1),
+    rstantools (>= 2.0.0)
+LinkingTo: 
+    BH (>= 1.66.0),
+    Rcpp (>= 0.12.0),
+    RcppEigen (>= 0.3.3.3.0),
+    rstan (>= 2.18.1),
+    StanHeaders (>= 2.18.0)
+RoxygenNote: 7.0.0
+SystemRequirements: GNU make
