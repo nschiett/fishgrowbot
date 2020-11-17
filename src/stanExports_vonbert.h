@@ -434,7 +434,7 @@ public:
                             "assigning variable mu");
             }
             current_statement_begin__ = 46;
-            lp_accum__.add(normal_log(t0, -(0.5), 1));
+            lp_accum__.add(normal_log(t0, 0, 5));
             current_statement_begin__ = 47;
             lp_accum__.add(normal_log(linf, linf_prior, 5));
             current_statement_begin__ = 48;

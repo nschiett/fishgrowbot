@@ -1,5 +1,6 @@
 #' Run back-calculation in Bayesian framework
 #'
+#' @author Nina M. D. Schiettekatte
 #' @param data dataframe containing results from otolith reading plus information on the length of hatching (l0p) of a certain species
 #' data should contain:
 #' \itemize{
@@ -15,21 +16,27 @@
 #' \itemize{
 #' \item{l_m:} mean length in mm
 #' \item{l_sd:} sd of length
-#' \item{l_q1:} lower 95% CI quantile
-#' \item{l_q3:} upper 95% CI quantile
+#' \item{l_lb:} lower 95% CI quantile
+#' \item{l_ub:} upper 95% CI quantile
 #' }
 #'
 #' Input data should include radi at age 0 measurements as well,
 #' but can handle missing data (NA) for the cases where it is not possible to measure the radius at hatching
 #' @import dplyr
 #' @import rstan
+#' @importFrom dplyr filter
 #' @export bcalc
-#' @examples
-#' em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
-#' bcalc(data = em)
 
 
 bcalc <- function(data, ...){
+
+  if (1 %in% data$agecap){
+    data <- dplyr::filter(data, agecap > 1)
+    warning("Removing individuals of age 1")
+  }
+
+  data <- as.data.frame(data)
+
 
   if(!"radi" %in% colnames(data)){
     warning("data not in correct format")
@@ -88,8 +95,7 @@ bcalc <- function(data, ...){
       r0p = data[data$agei == 0  & !is.na(data$radi), "radi"]
     )
 
-
-    fit <- rstan::sampling(stanmodels$stan_bcalc, sdata, chains = 4, ...)
+    fit <- suppressWarnings(rstan::sampling(stanmodels$stan_bcalc, sdata, chains = 4, ...))
 
     ll <- rstan::extract(fit, "l")[[1]]
 
@@ -98,9 +104,14 @@ bcalc <- function(data, ...){
       age = data$agei,
       l_m = apply(ll, 2, mean),
       l_sd = apply(ll, 2, sd),
-      l_q1 = apply(ll, 2, quantile, 0.025),
-      l_q3 = apply(ll, 2, quantile, 0.975)
+      l_lb = apply(ll, 2, quantile, 0.025),
+      l_ub = apply(ll, 2, quantile, 0.975)
     )
+
+    # check for fit
+
+
     return(list(fit = fit, lengths = lengths))
   }
 }
+

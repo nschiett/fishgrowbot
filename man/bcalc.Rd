@@ -28,14 +28,13 @@ Returns a list of model fit and a dataset called lengths with the estimated leng
 \itemize{
 \item{l_m:} mean length in mm
 \item{l_sd:} sd of length
-\item{l_q1:} lower 95% CI quantile
-\item{l_q3:} upper 95% CI quantile
+\item{l_lb:} lower 95% CI quantile
+\item{l_ub:} upper 95% CI quantile
 }
 
 Input data should include radi at age 0 measurements as well,
 but can handle missing data (NA) for the cases where it is not possible to measure the radius at hatching
 }
-\examples{
-em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
-bcalc(data = em)
+\author{
+Nina M. D. Schiettekatte
 }
