@@ -38,9 +38,6 @@ growthreg <- function(length, age, id, lmax = 20, linf_m, plot = TRUE, ...){
   requireNamespace("ggplot2")
   requireNamespace("rstan")
 
-  data <- dplyr::filter(data_complete, species == options[x, "species"], agecap > 1)
-
-
   data <- list(
     N = length(length),
     N_1 = length(unique(id)),

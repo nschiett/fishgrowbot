@@ -17,7 +17,7 @@ A data frame with 6320 rows and 13 variables.
   \item{radcap}{Radius of the otolith at capture (mm)}
   \item{lencap}{Length of the fish at capture (total length, mm)}
   \item{l0p}{Length of the fish at hatching (mm)}
-  \item{biomass}{Wet body mass of the fish at capture (g)}
+  \item{weight}{Wet body mass of the fish at capture (g)}
   \item{location}{Island of the sampling}
   \item{observer}{Name of person who measured the otolith}}
 }
