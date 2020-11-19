@@ -2,7 +2,7 @@ Package: fishgrowbot
 Title: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Nina",
+    person(given = "Nina M. D.",
            family = "Schiettekatte",
            role = c("aut", "cre"),
            email = "nina.schiettekatte@gmail.com",
@@ -27,5 +27,9 @@ LinkingTo:
     RcppEigen (>= 0.3.3.3.0),
     rstan (>= 2.18.1),
     StanHeaders (>= 2.18.0)
-RoxygenNote: 7.0.0
+RoxygenNote: 7.1.0
 SystemRequirements: GNU make
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

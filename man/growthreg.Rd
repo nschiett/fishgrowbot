@@ -42,6 +42,9 @@ fishgrowbot::growthreg(length = bc$l_m/10, age = bc$age,
 id = bc$id, lmax = 32, linf_m = 30, iter = 2000, chains = 1)
 
 }
+\author{
+Nina M. D. Schiettekatte
+}
 \keyword{Bertalanfy}
 \keyword{Von}
 \keyword{fish,}

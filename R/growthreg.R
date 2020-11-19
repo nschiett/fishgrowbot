@@ -1,6 +1,6 @@
 #' A function to extract growth parameters for fishes from back-calculation data
 #'
-#'
+#' @author Nina M. D. Schiettekatte
 #' @param length Numerical vector with length (CAUTION: must be in cm)
 #' @param age    Numerical vector with age
 #' @param id     Character vector with fish id
@@ -35,50 +35,49 @@
 
 growthreg <- function(length, age, id, lmax = 20, linf_m, plot = TRUE, ...){
 
-requireNamespace("ggplot2")
-requireNamespace("rstan")
+  requireNamespace("ggplot2")
+  requireNamespace("rstan")
 
+  data <- list(
+    N = length(length),
+    N_1 = length(unique(id)),
+    y = length,
+    x = age,
+    J = as.integer(as.factor(as.character(id))),
+    linf_prior = linf_m,
+    lmax = lmax,
+    X = rep(1, length(length))
+  )
 
-data <- list(
-  N = length(length),
-  N_1 = length(unique(id)),
-  y = length,
-  x = age,
-  J = as.integer(as.factor(as.character(id))),
-  linf_prior = linf_m,
-  lmax = lmax,
-  X = rep(1, length(length))
-)
+  fit <- rstan::sampling(stanmodels$vonbert, data = data, ...)
 
-fit <- rstan::sampling(stanmodels$vonbert, data = data, ...)
+  summary <-  as.data.frame(rstan::summary(fit)$summary)
 
-summary <-  as.data.frame(rstan::summary(fit)$summary)
+  result <- summary[c("k", "linf", "t0", "kmax"),1:8]
 
-result <- summary[c("k", "linf", "t0", "sl", "gp", "kmax"),1:8]
+  ee <- rstan::extract(fit)
+  y_m <- ee$y_m
+  y_rep <- ee$y_rep
+  pred <- data.frame(
+    age = age,
+    ypred_m = apply(y_m,2,mean),
+    ypred_lq = apply(y_m,2,quantile, 0.025),
+    ypred_uq = apply(y_m,2,quantile, 0.975),
+    yrep_m = apply(y_rep,2,mean),
+    yrep_lq = apply(y_rep,2,quantile, 0.025),
+    yrep_uq = apply(y_rep,2,quantile, 0.975)
+  )
 
-ee <- rstan::extract(fit)
-y_m <- ee$y_m
-y_rep <- ee$y_rep
-pred <- data.frame(
-  age = age,
-  ypred_m = apply(y_m,2,mean),
-  ypred_lq = apply(y_m,2,quantile, 0.025),
-  ypred_uq = apply(y_m,2,quantile, 0.975),
-  yrep_m = apply(y_rep,2,mean),
-  yrep_lq = apply(y_rep,2,quantile, 0.025),
-  yrep_uq = apply(y_rep,2,quantile, 0.975)
-)
+  if(plot){
+    p <-
+      ggplot() +
+      geom_point(aes(x = age, y = length)) +
+      geom_ribbon(aes(x = age, ymin = ypred_lq, ymax = ypred_uq), alpha = 0.4, data = pred) +
+      geom_line(aes(x = age, y = ypred_m), data = pred) +
+      theme_bw()
 
-if(plot){
-p <-
-  ggplot() +
-  geom_point(aes(x = age, y = length)) +
-  geom_ribbon(aes(x = age, ymin = ypred_lq, ymax = ypred_uq), alpha = 0.4, data = pred) +
-  geom_line(aes(x = age, y = ypred_m), data = pred) +
-  theme_bw()
-
-print(p)
-}
-return(list(summary = result, fitted = pred, stanfit = fit))
+    print(p)
+  }
+  return(list(summary = result, fitted = pred, stanfit = fit))
 
 }
