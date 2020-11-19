@@ -15,8 +15,8 @@
 #' \itemize{
 #' \item{l_m:} mean length in mm
 #' \item{l_sd:} sd of length
-#' \item{l_q1:} lower 95% CI quantile
-#' \item{l_q3:} upper 95% CI quantile
+#' \item{l_lb:} lower 95% CI quantile
+#' \item{l_ub:} upper 95% CI quantile
 #' }
 #'
 #' Input data should include radi at age 0 measurements as well,
@@ -98,8 +98,8 @@ bcalc <- function(data, ...){
       age = data$agei,
       l_m = apply(ll, 2, mean),
       l_sd = apply(ll, 2, sd),
-      l_q1 = apply(ll, 2, quantile, 0.025),
-      l_q3 = apply(ll, 2, quantile, 0.975)
+      l_lb = apply(ll, 2, quantile, 0.025),
+      l_ub = apply(ll, 2, quantile, 0.975)
     )
     return(list(fit = fit, lengths = lengths))
   }
