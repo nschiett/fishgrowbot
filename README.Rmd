@@ -1,0 +1,82 @@
+---
+title: "fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework"
+author:
+  - "Nina Schiettekatte"
+date: "`r Sys.Date()`"
+output:
+  md_document:
+    variant: markdown_github
+    toc: true
+    toc_depth: 1
+---
+<!-- badges: start -->
+[![Build Status](https://api.travis-ci.org/nschiett/fishualize.png?branch=master)](https://travis-ci.org/nschiett/fishgrowbot)
+<!-- badges: end -->
+
+
+# fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework    
+
+The `fishgrowbot` package provides a tool to conduct back-calculation based on otolith readings and fit the Von Bertalanffy growth curve, both in a Bayesian framework.
+
+
+
+# Installing and loading fishgrowbot
+
+`fishgrowbot` uses Markov Chain Monte Carlo simulations provided by
+[stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+Therefore, the first step is to install
+[stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+
+### GitHub
+
+The best way to install the latest version of `fishgrowbot` is
+to install it from GitHub.
+
+``` r
+install.packages("devtools")
+devtools::install_github("nschiett/fishgrowbot", dependencies=TRUE)
+library(fishflux)
+```
+
+### CRAN
+
+`fishgrowbot` will be available on CRAN in the future:
+
+``` r
+install.packages("fishgrowbot")
+library(fishgrowbot)
+```
+
+# Use
+
+Let's look at an example for *Epinephelus merra*
+
+``` {r, bc, message= FALSE}
+library(fishgrowbot)
+library(dplyr)
+
+# get data
+em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
+
+# back-calculation
+bc <- fishgrowbot::bcalc(data = em)$lengths
+head(bc)
+```
+
+```{r, growthmodel, message = FALSE}
+# fit growth model
+growthmodel <-fishgrowbot::growthreg(length = bc$l_m/10, age = bc$age, id = bc$id, lmax = 32, linf_m = 30, chains = 1)
+
+# summary growth parameters
+growthmodel$summary
+```
+
+
+
+# Citation
+
+
+**add citation data paper **
+
+# References
+
