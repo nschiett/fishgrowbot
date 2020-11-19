@@ -15,7 +15,7 @@ bcplot(bcdata, colorid = FALSE, facet = FALSE, legend = FALSE, error = FALSE)
 
 \item{legend}{Option to add color legend (defaul = FALSE)}
 
-\item{error}{Option to show 95%CI around bc estimates (default = FALSE)}
+\item{error}{Option to show 95\%CI around bc estimates (default = FALSE)}
 }
 \value{
 A plot showing back-calculated lengths

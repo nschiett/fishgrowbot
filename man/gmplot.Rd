@@ -15,7 +15,7 @@ gmplot(gmdata, id = FALSE, facet = FALSE, legend = FALSE, error = TRUE)
 
 \item{legend}{Option to add color legend (defaul = FALSE)}
 
-\item{error}{Option to show 95%CI around bc estimates (default = FALSE)}
+\item{error}{Option to show 95\%CI around bc estimates (default = FALSE)}
 }
 \value{
 

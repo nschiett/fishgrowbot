@@ -4,7 +4,7 @@
 #' @param bcdata Results from back-calculation (output of function bcalc())
 #' @param colorid Option to specify colors by fish id (default = FALSE)
 #' @param facet Option to split graph in facets per fish id (default = FALSE)
-#' @param error Option to show 95%CI around bc estimates (default = FALSE)
+#' @param error Option to show 95\%CI around bc estimates (default = FALSE)
 #' @param legend Option to add color legend (defaul = FALSE)
 #'
 #' @return A plot showing back-calculated lengths
@@ -72,7 +72,7 @@ bcplot <- function(bcdata, colorid = FALSE,
 #' @param gmdata output of function growthreg()
 #' @param id Show growth curves per individual (default = FALSE)
 #' @param facet Option to split graph in facets per fish id (default = FALSE)
-#' @param error Option to show 95%CI around bc estimates (default = FALSE)
+#' @param error Option to show 95\%CI around bc estimates (default = FALSE)
 #' @param legend Option to add color legend (defaul = FALSE)
 #'
 #' @return
