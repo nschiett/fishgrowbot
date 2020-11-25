@@ -43,15 +43,8 @@ install it from GitHub.
     ## also installing the dependencies 'utf8', 'pillar', 'pkgconfig', 'vctrs', 'BH', 'sys', 'ini', 'tibble', 'lazyeval', 'later', 'askpass', 'diffobj', 'clipr', 'crayon', 'curl', 'fs', 'gh', 'git2r', 'purrr', 'rematch2', 'rprojroot', 'whisker', 'processx', 'R6', 'assertthat', 'fansi', 'rex', 'htmlwidgets', 'crosstalk', 'promises', 'openssl', 'prettyunits', 'xopen', 'brew', 'commonmark', 'Rcpp', 'xml2', 'brio', 'lifecycle', 'praise', 'ps', 'waldo', 'usethis', 'callr', 'cli', 'covr', 'desc', 'DT', 'ellipsis', 'httr', 'memoise', 'pkgbuild', 'pkgload', 'rcmdcheck', 'remotes', 'roxygen2', 'rstudioapi', 'rversions', 'sessioninfo', 'testthat', 'withr'
 
     ## 
-    ##   There is a binary version available but the source version is later:
-    ##       binary source needs_compilation
-    ## vctrs  0.3.4  0.3.5              TRUE
-    ## 
-    ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7OjLRP/downloaded_packages
-
-    ## installing the source package 'vctrs'
+    ##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpPLSxEB/downloaded_packages
 
     ## Using bundled GitHub PAT. Please add your own PAT to the env var `GITHUB_PAT`
 
@@ -95,14 +88,14 @@ install it from GitHub.
     ## 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7OjLRP/downloaded_packages
+    ##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpPLSxEB/downloaded_packages
 
     ## installing the source package 'rstan'
 
-    ##      checking for file ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp7OjLRP/remotes68a2e0fa3ee/nschiett-fishgrowbot-d099938/DESCRIPTION’ ...  [32m✔[39m  [90mchecking for file ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp7OjLRP/remotes68a2e0fa3ee/nschiett-fishgrowbot-d099938/DESCRIPTION’[39m[36m[39m
+    ##      checking for file ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpPLSxEB/remotes62a15bfec2a/nschiett-fishgrowbot-b2e20b5/DESCRIPTION’ ...  [32m✔[39m  [90mchecking for file ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpPLSxEB/remotes62a15bfec2a/nschiett-fishgrowbot-b2e20b5/DESCRIPTION’[39m[36m[39m
     ##   [90m─[39m[90m  [39m[90mpreparing ‘fishgrowbot’:[39m[36m[39m
     ##      checking DESCRIPTION meta-information ...  [32m✔[39m  [90mchecking DESCRIPTION meta-information[39m[36m[39m
-    ## [90m─[39m[90m  [39m[90mcleaning src[39m[36m[39m
+    ##   [90m─[39m[90m  [39m[90mcleaning src[39m[36m[39m
     ##   [90m─[39m[90m  [39m[90mchecking for LF line-endings in source and make files and shell scripts[39m[36m[39m
     ##   [90m─[39m[90m  [39m[90mchecking for empty or unneeded directories[39m[36m[39m
     ##      Removed empty directory ‘fishgrowbot/paper’
@@ -135,8 +128,8 @@ bc <- fishgrowbot::bcalc(data = em)
     ## 
     ## SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 1).
     ## Chain 1: 
-    ## Chain 1: Gradient evaluation took 5.8e-05 seconds
-    ## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.58 seconds.
+    ## Chain 1: Gradient evaluation took 5.7e-05 seconds
+    ## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.57 seconds.
     ## Chain 1: Adjust your expectations accordingly!
     ## Chain 1: 
     ## Chain 1: 
@@ -153,15 +146,15 @@ bc <- fishgrowbot::bcalc(data = em)
     ## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
     ## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
     ## Chain 1: 
-    ## Chain 1:  Elapsed Time: 0.576961 seconds (Warm-up)
-    ## Chain 1:                0.192021 seconds (Sampling)
-    ## Chain 1:                0.768982 seconds (Total)
+    ## Chain 1:  Elapsed Time: 0.678274 seconds (Warm-up)
+    ## Chain 1:                0.194189 seconds (Sampling)
+    ## Chain 1:                0.872463 seconds (Total)
     ## Chain 1: 
     ## 
     ## SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 2).
     ## Chain 2: 
-    ## Chain 2: Gradient evaluation took 2.7e-05 seconds
-    ## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.27 seconds.
+    ## Chain 2: Gradient evaluation took 2.5e-05 seconds
+    ## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.25 seconds.
     ## Chain 2: Adjust your expectations accordingly!
     ## Chain 2: 
     ## Chain 2: 
@@ -178,9 +171,9 @@ bc <- fishgrowbot::bcalc(data = em)
     ## Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
     ## Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
     ## Chain 2: 
-    ## Chain 2:  Elapsed Time: 0.609494 seconds (Warm-up)
-    ## Chain 2:                0.183303 seconds (Sampling)
-    ## Chain 2:                0.792797 seconds (Total)
+    ## Chain 2:  Elapsed Time: 0.641965 seconds (Warm-up)
+    ## Chain 2:                0.226217 seconds (Sampling)
+    ## Chain 2:                0.868182 seconds (Total)
     ## Chain 2: 
     ## 
     ## SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 3).
@@ -203,15 +196,15 @@ bc <- fishgrowbot::bcalc(data = em)
     ## Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
     ## Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
     ## Chain 3: 
-    ## Chain 3:  Elapsed Time: 0.591559 seconds (Warm-up)
-    ## Chain 3:                0.200617 seconds (Sampling)
-    ## Chain 3:                0.792176 seconds (Total)
+    ## Chain 3:  Elapsed Time: 0.741646 seconds (Warm-up)
+    ## Chain 3:                0.200978 seconds (Sampling)
+    ## Chain 3:                0.942624 seconds (Total)
     ## Chain 3: 
     ## 
     ## SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 4).
     ## Chain 4: 
-    ## Chain 4: Gradient evaluation took 2.3e-05 seconds
-    ## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.
+    ## Chain 4: Gradient evaluation took 2.7e-05 seconds
+    ## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.27 seconds.
     ## Chain 4: Adjust your expectations accordingly!
     ## Chain 4: 
     ## Chain 4: 
@@ -228,9 +221,9 @@ bc <- fishgrowbot::bcalc(data = em)
     ## Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
     ## Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
     ## Chain 4: 
-    ## Chain 4:  Elapsed Time: 0.702756 seconds (Warm-up)
-    ## Chain 4:                0.201035 seconds (Sampling)
-    ## Chain 4:                0.903791 seconds (Total)
+    ## Chain 4:  Elapsed Time: 0.619981 seconds (Warm-up)
+    ## Chain 4:                0.220003 seconds (Sampling)
+    ## Chain 4:                0.839984 seconds (Total)
     ## Chain 4:
 
 ``` r
@@ -238,12 +231,12 @@ head(bc$lengths)
 ```
 
     ##                   id age      l_m         l_sd     l_lb     l_ub
-    ## 1 EP_ME_MO_03_16_001   0   1.5000 1.101667e-15   1.5000   1.5000
-    ## 2 EP_ME_MO_03_16_001   1 154.4297 5.980690e+00 142.8319 166.1422
-    ## 3 EP_ME_MO_03_16_001   2 178.4956 4.730941e+00 169.2453 187.6787
-    ## 4 EP_ME_MO_03_16_001   3 192.2450 3.874441e+00 184.6374 199.7307
-    ## 5 EP_ME_MO_03_16_001   4 205.7257 2.942723e+00 199.9253 211.3867
-    ## 6 EP_ME_MO_03_16_001   5 217.8073 2.035058e+00 213.7831 221.7078
+    ## 1 EP_ME_MO_03_16_001   0   1.5000 1.079920e-15   1.5000   1.5000
+    ## 2 EP_ME_MO_03_16_001   1 154.3720 5.777569e+00 143.3065 166.0029
+    ## 3 EP_ME_MO_03_16_001   2 178.4520 4.567045e+00 169.6294 187.5710
+    ## 4 EP_ME_MO_03_16_001   3 192.2101 3.738804e+00 184.9557 199.6435
+    ## 5 EP_ME_MO_03_16_001   4 205.6997 2.838693e+00 200.1697 211.3212
+    ## 6 EP_ME_MO_03_16_001   5 217.7897 1.962512e+00 213.9536 221.6630
 
 ``` r
 # fit growth model
@@ -260,9 +253,13 @@ growthmodel <-fishgrowbot::growthreg(length = bc$lengths$l_m/10, age = bc$length
     ## Chain 1:   Error evaluating the log probability at the initial value.
     ## Chain 1: Exception: normal_lpdf: Location parameter[1] is nan, but must be finite!  (in 'model_vonbert' at line 56)
     ## 
+    ## Chain 1: Rejecting initial value:
+    ## Chain 1:   Error evaluating the log probability at the initial value.
+    ## Chain 1: Exception: normal_lpdf: Location parameter[1] is nan, but must be finite!  (in 'model_vonbert' at line 56)
+    ## 
     ## Chain 1: 
-    ## Chain 1: Gradient evaluation took 0.000105 seconds
-    ## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.05 seconds.
+    ## Chain 1: Gradient evaluation took 0.000108 seconds
+    ## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.08 seconds.
     ## Chain 1: Adjust your expectations accordingly!
     ## Chain 1: 
     ## Chain 1: 
@@ -279,14 +276,18 @@ growthmodel <-fishgrowbot::growthreg(length = bc$lengths$l_m/10, age = bc$length
     ## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
     ## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
     ## Chain 1: 
-    ## Chain 1:  Elapsed Time: 4.23719 seconds (Warm-up)
-    ## Chain 1:                4.39988 seconds (Sampling)
-    ## Chain 1:                8.63706 seconds (Total)
+    ## Chain 1:  Elapsed Time: 4.54578 seconds (Warm-up)
+    ## Chain 1:                3.97356 seconds (Sampling)
+    ## Chain 1:                8.51933 seconds (Total)
     ## Chain 1:
 
     ## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
     ## Running the chains for more iterations may help. See
     ## http://mc-stan.org/misc/warnings.html#bulk-ess
+
+    ## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+    ## Running the chains for more iterations may help. See
+    ## http://mc-stan.org/misc/warnings.html#tail-ess
 
 ![](README_files/figure-markdown_github/growthmodel-1.png)
 
@@ -295,16 +296,16 @@ growthmodel <-fishgrowbot::growthreg(length = bc$lengths$l_m/10, age = bc$length
 growthmodel$summary
 ```
 
-    ##            mean     se_mean         sd       2.5%         25%         50%
-    ## k     0.6395614 0.003212199 0.05196229  0.5386813  0.60737347  0.63803165
-    ## linf 15.0352750 0.102783372 1.01080709 13.2249490 14.32942464 14.96422739
-    ## t0   -0.0463948 0.001132513 0.02698567 -0.1017801 -0.06288407 -0.04659219
-    ## kmax  0.4018495 0.001850108 0.03887208  0.3332511  0.37452592  0.39840427
+    ##             mean      se_mean         sd        2.5%         25%         50%
+    ## k     0.64572152 0.0036265634 0.05463939  0.54395964  0.60798548  0.64555772
+    ## linf 14.84683297 0.1117899991 1.14141118 12.77656647 14.11735018 14.85715338
+    ## t0   -0.04571065 0.0009926927 0.02515957 -0.09419856 -0.06225563 -0.04518327
+    ## kmax  0.39747023 0.0023716203 0.04135692  0.32434818  0.36707653  0.39491713
     ##              75%        97.5%
-    ## k     0.67284114  0.743503433
-    ## linf 15.65139380 17.265275493
-    ## t0   -0.02935879  0.006892645
-    ## kmax  0.42669483  0.485880295
+    ## k     0.67960860  0.755421511
+    ## linf 15.47661279 17.522791882
+    ## t0   -0.02834019  0.002258729
+    ## kmax  0.42452917  0.477170442
 
 Citation
 ========
