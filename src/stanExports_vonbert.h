@@ -33,7 +33,7 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_vonbert");
-    reader.add_event(90, 88, "end", "model_vonbert");
+    reader.add_event(93, 91, "end", "model_vonbert");
     return reader;
 }
 #include <stan_meta_header.hpp>
@@ -46,7 +46,10 @@ private:
         int N_1;
         std::vector<int> J;
         double linf_prior;
+        double linf_sd;
         double lmax;
+        double l0_prior;
+        double l0_sd;
 public:
     model_vonbert(stan::io::var_context& context__,
         std::ostream* pstream__ = 0)
@@ -141,32 +144,55 @@ public:
             vals_r__ = context__.vals_r("linf_prior");
             pos__ = 0;
             linf_prior = vals_r__[pos__++];
+            check_greater_or_equal(function__, "linf_prior", linf_prior, 0);
             current_statement_begin__ = 17;
+            context__.validate_dims("data initialization", "linf_sd", "double", context__.to_vec());
+            linf_sd = double(0);
+            vals_r__ = context__.vals_r("linf_sd");
+            pos__ = 0;
+            linf_sd = vals_r__[pos__++];
+            check_greater_or_equal(function__, "linf_sd", linf_sd, 0);
+            current_statement_begin__ = 18;
             context__.validate_dims("data initialization", "lmax", "double", context__.to_vec());
             lmax = double(0);
             vals_r__ = context__.vals_r("lmax");
             pos__ = 0;
             lmax = vals_r__[pos__++];
+            check_greater_or_equal(function__, "lmax", lmax, 0);
+            current_statement_begin__ = 19;
+            context__.validate_dims("data initialization", "l0_prior", "double", context__.to_vec());
+            l0_prior = double(0);
+            vals_r__ = context__.vals_r("l0_prior");
+            pos__ = 0;
+            l0_prior = vals_r__[pos__++];
+            check_greater_or_equal(function__, "l0_prior", l0_prior, 0);
+            current_statement_begin__ = 20;
+            context__.validate_dims("data initialization", "l0_sd", "double", context__.to_vec());
+            l0_sd = double(0);
+            vals_r__ = context__.vals_r("l0_sd");
+            pos__ = 0;
+            l0_sd = vals_r__[pos__++];
+            check_greater_or_equal(function__, "l0_sd", l0_sd, 0);
             // initialize transformed data variables
             // execute transformed data statements
             // validate transformed data
             // validate, set parameter ranges
             num_params_r__ = 0U;
             param_ranges_i__.clear();
-            current_statement_begin__ = 22;
-            num_params_r__ += 1;
-            current_statement_begin__ = 23;
-            num_params_r__ += 1;
-            current_statement_begin__ = 24;
-            num_params_r__ += 1;
             current_statement_begin__ = 25;
             num_params_r__ += 1;
             current_statement_begin__ = 26;
             num_params_r__ += 1;
             current_statement_begin__ = 27;
-            validate_non_negative_index("sd_linf", "1", 1);
             num_params_r__ += 1;
             current_statement_begin__ = 28;
+            num_params_r__ += 1;
+            current_statement_begin__ = 29;
+            num_params_r__ += 1;
+            current_statement_begin__ = 30;
+            validate_non_negative_index("sd_linf", "1", 1);
+            num_params_r__ += 1;
+            current_statement_begin__ = 31;
             validate_non_negative_index("z_linf", "N_1", N_1);
             validate_non_negative_index("z_linf", "1", 1);
             num_params_r__ += (N_1 * 1);
@@ -187,20 +213,20 @@ public:
         (void) pos__; // dummy call to supress warning
         std::vector<double> vals_r__;
         std::vector<int> vals_i__;
-        current_statement_begin__ = 22;
-        if (!(context__.contains_r("t0")))
-            stan::lang::rethrow_located(std::runtime_error(std::string("Variable t0 missing")), current_statement_begin__, prog_reader__());
-        vals_r__ = context__.vals_r("t0");
+        current_statement_begin__ = 25;
+        if (!(context__.contains_r("l0")))
+            stan::lang::rethrow_located(std::runtime_error(std::string("Variable l0 missing")), current_statement_begin__, prog_reader__());
+        vals_r__ = context__.vals_r("l0");
         pos__ = 0U;
-        context__.validate_dims("parameter initialization", "t0", "double", context__.to_vec());
-        double t0(0);
-        t0 = vals_r__[pos__++];
+        context__.validate_dims("parameter initialization", "l0", "double", context__.to_vec());
+        double l0(0);
+        l0 = vals_r__[pos__++];
         try {
-            writer__.scalar_unconstrain(t0);
+            writer__.scalar_unconstrain(l0);
         } catch (const std::exception& e) {
-            stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable t0: ") + e.what()), current_statement_begin__, prog_reader__());
+            stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable l0: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 23;
+        current_statement_begin__ = 26;
         if (!(context__.contains_r("linf")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable linf missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("linf");
@@ -209,11 +235,11 @@ public:
         double linf(0);
         linf = vals_r__[pos__++];
         try {
-            writer__.scalar_unconstrain(linf);
+            writer__.scalar_lub_unconstrain(0, lmax, linf);
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable linf: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 24;
+        current_statement_begin__ = 27;
         if (!(context__.contains_r("sl")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable sl missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("sl");
@@ -222,11 +248,11 @@ public:
         double sl(0);
         sl = vals_r__[pos__++];
         try {
-            writer__.scalar_unconstrain(sl);
+            writer__.scalar_ub_unconstrain(0, sl);
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable sl: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 25;
+        current_statement_begin__ = 28;
         if (!(context__.contains_r("gp")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable gp missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("gp");
@@ -235,11 +261,11 @@ public:
         double gp(0);
         gp = vals_r__[pos__++];
         try {
-            writer__.scalar_unconstrain(gp);
+            writer__.scalar_lb_unconstrain(0, gp);
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable gp: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 26;
+        current_statement_begin__ = 29;
         if (!(context__.contains_r("sigma")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable sigma missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("sigma");
@@ -252,7 +278,7 @@ public:
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable sigma: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 27;
+        current_statement_begin__ = 30;
         if (!(context__.contains_r("sd_linf")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable sd_linf missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("sd_linf");
@@ -269,7 +295,7 @@ public:
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(std::runtime_error(std::string("Error transforming variable sd_linf: ") + e.what()), current_statement_begin__, prog_reader__());
         }
-        current_statement_begin__ = 28;
+        current_statement_begin__ = 31;
         if (!(context__.contains_r("z_linf")))
             stan::lang::rethrow_located(std::runtime_error(std::string("Variable z_linf missing")), current_statement_begin__, prog_reader__());
         vals_r__ = context__.vals_r("z_linf");
@@ -318,49 +344,49 @@ public:
         try {
             stan::io::reader<local_scalar_t__> in__(params_r__, params_i__);
             // model parameters
-            current_statement_begin__ = 22;
-            local_scalar_t__ t0;
-            (void) t0;  // dummy to suppress unused var warning
+            current_statement_begin__ = 25;
+            local_scalar_t__ l0;
+            (void) l0;  // dummy to suppress unused var warning
             if (jacobian__)
-                t0 = in__.scalar_constrain(lp__);
+                l0 = in__.scalar_constrain(lp__);
             else
-                t0 = in__.scalar_constrain();
-            current_statement_begin__ = 23;
+                l0 = in__.scalar_constrain();
+            current_statement_begin__ = 26;
             local_scalar_t__ linf;
             (void) linf;  // dummy to suppress unused var warning
             if (jacobian__)
-                linf = in__.scalar_constrain(lp__);
+                linf = in__.scalar_lub_constrain(0, lmax, lp__);
             else
-                linf = in__.scalar_constrain();
-            current_statement_begin__ = 24;
+                linf = in__.scalar_lub_constrain(0, lmax);
+            current_statement_begin__ = 27;
             local_scalar_t__ sl;
             (void) sl;  // dummy to suppress unused var warning
             if (jacobian__)
-                sl = in__.scalar_constrain(lp__);
+                sl = in__.scalar_ub_constrain(0, lp__);
             else
-                sl = in__.scalar_constrain();
-            current_statement_begin__ = 25;
+                sl = in__.scalar_ub_constrain(0);
+            current_statement_begin__ = 28;
             local_scalar_t__ gp;
             (void) gp;  // dummy to suppress unused var warning
             if (jacobian__)
-                gp = in__.scalar_constrain(lp__);
+                gp = in__.scalar_lb_constrain(0, lp__);
             else
-                gp = in__.scalar_constrain();
-            current_statement_begin__ = 26;
+                gp = in__.scalar_lb_constrain(0);
+            current_statement_begin__ = 29;
             local_scalar_t__ sigma;
             (void) sigma;  // dummy to suppress unused var warning
             if (jacobian__)
                 sigma = in__.scalar_lb_constrain(0, lp__);
             else
                 sigma = in__.scalar_lb_constrain(0);
-            current_statement_begin__ = 27;
+            current_statement_begin__ = 30;
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> sd_linf;
             (void) sd_linf;  // dummy to suppress unused var warning
             if (jacobian__)
                 sd_linf = in__.vector_lb_constrain(0, 1, lp__);
             else
                 sd_linf = in__.vector_lb_constrain(0, 1);
-            current_statement_begin__ = 28;
+            current_statement_begin__ = 31;
             std::vector<Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> > z_linf;
             size_t z_linf_d_0_max__ = 1;
             z_linf.reserve(z_linf_d_0_max__);
@@ -371,16 +397,28 @@ public:
                     z_linf.push_back(in__.vector_constrain(N_1));
             }
             // transformed parameters
-            current_statement_begin__ = 32;
+            current_statement_begin__ = 35;
             validate_non_negative_index("r_linf", "N_1", N_1);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> r_linf(N_1);
             stan::math::initialize(r_linf, DUMMY_VAR__);
             stan::math::fill(r_linf, DUMMY_VAR__);
             stan::math::assign(r_linf,multiply(get_base1(sd_linf, 1, "sd_linf", 1), get_base1(z_linf, 1, "z_linf", 1)));
+            current_statement_begin__ = 36;
+            local_scalar_t__ k;
+            (void) k;  // dummy to suppress unused var warning
+            stan::math::initialize(k, DUMMY_VAR__);
+            stan::math::fill(k, DUMMY_VAR__);
+            stan::math::assign(k,stan::math::exp(((sl * stan::math::log(linf)) + gp)));
+            current_statement_begin__ = 37;
+            local_scalar_t__ t0;
+            (void) t0;  // dummy to suppress unused var warning
+            stan::math::initialize(t0, DUMMY_VAR__);
+            stan::math::fill(t0, DUMMY_VAR__);
+            stan::math::assign(t0,(stan::math::log((1 - (l0 / linf))) / k));
             // validate transformed parameters
             const char* function__ = "validate transformed params";
             (void) function__;  // dummy to suppress unused var warning
-            current_statement_begin__ = 32;
+            current_statement_begin__ = 35;
             size_t r_linf_j_1_max__ = N_1;
             for (size_t j_1__ = 0; j_1__ < r_linf_j_1_max__; ++j_1__) {
                 if (stan::math::is_uninitialized(r_linf(j_1__))) {
@@ -389,65 +427,78 @@ public:
                     stan::lang::rethrow_located(std::runtime_error(std::string("Error initializing variable r_linf: ") + msg__.str()), current_statement_begin__, prog_reader__());
                 }
             }
+            current_statement_begin__ = 36;
+            if (stan::math::is_uninitialized(k)) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: k";
+                stan::lang::rethrow_located(std::runtime_error(std::string("Error initializing variable k: ") + msg__.str()), current_statement_begin__, prog_reader__());
+            }
+            check_greater_or_equal(function__, "k", k, 0);
+            current_statement_begin__ = 37;
+            if (stan::math::is_uninitialized(t0)) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: t0";
+                stan::lang::rethrow_located(std::runtime_error(std::string("Error initializing variable t0: ") + msg__.str()), current_statement_begin__, prog_reader__());
+            }
             // model body
             {
-            current_statement_begin__ = 35;
+            current_statement_begin__ = 40;
             validate_non_negative_index("nlp_t0", "N", N);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> nlp_t0(N);
             stan::math::initialize(nlp_t0, DUMMY_VAR__);
             stan::math::fill(nlp_t0, DUMMY_VAR__);
             stan::math::assign(nlp_t0,multiply(X, t0));
-            current_statement_begin__ = 36;
+            current_statement_begin__ = 41;
             validate_non_negative_index("nlp_linf", "N", N);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> nlp_linf(N);
             stan::math::initialize(nlp_linf, DUMMY_VAR__);
             stan::math::fill(nlp_linf, DUMMY_VAR__);
             stan::math::assign(nlp_linf,multiply(X, linf));
-            current_statement_begin__ = 37;
+            current_statement_begin__ = 42;
             validate_non_negative_index("nlp_sl", "N", N);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> nlp_sl(N);
             stan::math::initialize(nlp_sl, DUMMY_VAR__);
             stan::math::fill(nlp_sl, DUMMY_VAR__);
             stan::math::assign(nlp_sl,multiply(X, sl));
-            current_statement_begin__ = 38;
+            current_statement_begin__ = 43;
             validate_non_negative_index("nlp_gp", "N", N);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> nlp_gp(N);
             stan::math::initialize(nlp_gp, DUMMY_VAR__);
             stan::math::fill(nlp_gp, DUMMY_VAR__);
             stan::math::assign(nlp_gp,multiply(X, gp));
-            current_statement_begin__ = 39;
+            current_statement_begin__ = 44;
             validate_non_negative_index("mu", "N", N);
             Eigen::Matrix<local_scalar_t__, Eigen::Dynamic, 1> mu(N);
             stan::math::initialize(mu, DUMMY_VAR__);
             stan::math::fill(mu, DUMMY_VAR__);
-            current_statement_begin__ = 40;
+            current_statement_begin__ = 45;
             for (int n = 1; n <= N; ++n) {
-                current_statement_begin__ = 41;
+                current_statement_begin__ = 46;
                 stan::model::assign(nlp_linf, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             (stan::model::rvalue(nlp_linf, stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), "nlp_linf") + get_base1(r_linf, get_base1(J, n, "J", 1), "r_linf", 1)), 
                             "assigning variable nlp_linf");
-                current_statement_begin__ = 43;
+                current_statement_begin__ = 48;
                 stan::model::assign(mu, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             (get_base1(nlp_linf, n, "nlp_linf", 1) * (1 - stan::math::exp((-(stan::math::exp(((get_base1(nlp_sl, n, "nlp_sl", 1) * stan::math::log(get_base1(nlp_linf, n, "nlp_linf", 1))) + get_base1(nlp_gp, n, "nlp_gp", 1)))) * (get_base1(x, n, "x", 1) - get_base1(nlp_t0, n, "nlp_t0", 1)))))), 
                             "assigning variable mu");
             }
-            current_statement_begin__ = 46;
+            current_statement_begin__ = 51;
             lp_accum__.add(normal_log(t0, 0, 5));
-            current_statement_begin__ = 47;
-            lp_accum__.add(normal_log(linf, linf_prior, 5));
-            current_statement_begin__ = 48;
-            lp_accum__.add(normal_log(sl, -(2.3), 0.22));
-            current_statement_begin__ = 49;
-            lp_accum__.add(normal_log(gp, 3, 2));
-            current_statement_begin__ = 50;
-            lp_accum__.add((student_t_log(sigma, 3, 0, 10) - (1 * student_t_ccdf_log(0, 3, 0, 10))));
             current_statement_begin__ = 52;
-            lp_accum__.add((student_t_log(sd_linf, 3, 0, 10) - (1 * student_t_ccdf_log(0, 3, 0, 10))));
+            lp_accum__.add(normal_log(linf, linf_prior, 5));
+            current_statement_begin__ = 53;
+            lp_accum__.add(normal_log(sl, -(2.3), 0.22));
             current_statement_begin__ = 54;
+            lp_accum__.add(normal_log(gp, 3, 2));
+            current_statement_begin__ = 55;
+            lp_accum__.add((student_t_log(sigma, 3, 0, 10) - (1 * student_t_ccdf_log(0, 3, 0, 10))));
+            current_statement_begin__ = 57;
+            lp_accum__.add((student_t_log(sd_linf, 3, 0, 10) - (1 * student_t_ccdf_log(0, 3, 0, 10))));
+            current_statement_begin__ = 59;
             lp_accum__.add(normal_log(get_base1(z_linf, 1, "z_linf", 1), 0, 1));
-            current_statement_begin__ = 56;
+            current_statement_begin__ = 61;
             lp_accum__.add(normal_log(y, mu, sigma));
             }
         } catch (const std::exception& e) {
@@ -470,7 +521,7 @@ public:
     }
     void get_param_names(std::vector<std::string>& names__) const {
         names__.resize(0);
-        names__.push_back("t0");
+        names__.push_back("l0");
         names__.push_back("linf");
         names__.push_back("sl");
         names__.push_back("gp");
@@ -479,6 +530,7 @@ public:
         names__.push_back("z_linf");
         names__.push_back("r_linf");
         names__.push_back("k");
+        names__.push_back("t0");
         names__.push_back("k_j");
         names__.push_back("linf_j");
         names__.push_back("kmax");
@@ -508,6 +560,8 @@ public:
         dimss__.push_back(dims__);
         dims__.resize(0);
         dims__.push_back(N_1);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
         dimss__.push_back(dims__);
         dims__.resize(0);
         dimss__.push_back(dims__);
@@ -543,13 +597,13 @@ public:
         static const char* function__ = "model_vonbert_namespace::write_array";
         (void) function__;  // dummy to suppress unused var warning
         // read-transform, write parameters
-        double t0 = in__.scalar_constrain();
-        vars__.push_back(t0);
-        double linf = in__.scalar_constrain();
+        double l0 = in__.scalar_constrain();
+        vars__.push_back(l0);
+        double linf = in__.scalar_lub_constrain(0, lmax);
         vars__.push_back(linf);
-        double sl = in__.scalar_constrain();
+        double sl = in__.scalar_ub_constrain(0);
         vars__.push_back(sl);
-        double gp = in__.scalar_constrain();
+        double gp = in__.scalar_lb_constrain(0);
         vars__.push_back(gp);
         double sigma = in__.scalar_lb_constrain(0);
         vars__.push_back(sigma);
@@ -579,122 +633,129 @@ public:
         if (!include_tparams__ && !include_gqs__) return;
         try {
             // declare and define transformed parameters
-            current_statement_begin__ = 32;
+            current_statement_begin__ = 35;
             validate_non_negative_index("r_linf", "N_1", N_1);
             Eigen::Matrix<double, Eigen::Dynamic, 1> r_linf(N_1);
             stan::math::initialize(r_linf, DUMMY_VAR__);
             stan::math::fill(r_linf, DUMMY_VAR__);
             stan::math::assign(r_linf,multiply(get_base1(sd_linf, 1, "sd_linf", 1), get_base1(z_linf, 1, "z_linf", 1)));
+            current_statement_begin__ = 36;
+            double k;
+            (void) k;  // dummy to suppress unused var warning
+            stan::math::initialize(k, DUMMY_VAR__);
+            stan::math::fill(k, DUMMY_VAR__);
+            stan::math::assign(k,stan::math::exp(((sl * stan::math::log(linf)) + gp)));
+            current_statement_begin__ = 37;
+            double t0;
+            (void) t0;  // dummy to suppress unused var warning
+            stan::math::initialize(t0, DUMMY_VAR__);
+            stan::math::fill(t0, DUMMY_VAR__);
+            stan::math::assign(t0,(stan::math::log((1 - (l0 / linf))) / k));
             if (!include_gqs__ && !include_tparams__) return;
             // validate transformed parameters
             const char* function__ = "validate transformed params";
             (void) function__;  // dummy to suppress unused var warning
+            current_statement_begin__ = 36;
+            check_greater_or_equal(function__, "k", k, 0);
             // write transformed parameters
             if (include_tparams__) {
                 size_t r_linf_j_1_max__ = N_1;
                 for (size_t j_1__ = 0; j_1__ < r_linf_j_1_max__; ++j_1__) {
                     vars__.push_back(r_linf(j_1__));
                 }
+                vars__.push_back(k);
+                vars__.push_back(t0);
             }
             if (!include_gqs__) return;
             // declare and define generated quantities
-            current_statement_begin__ = 60;
-            double k;
-            (void) k;  // dummy to suppress unused var warning
-            stan::math::initialize(k, DUMMY_VAR__);
-            stan::math::fill(k, DUMMY_VAR__);
-            current_statement_begin__ = 61;
+            current_statement_begin__ = 65;
             validate_non_negative_index("k_j", "N_1", N_1);
             Eigen::Matrix<double, Eigen::Dynamic, 1> k_j(N_1);
             stan::math::initialize(k_j, DUMMY_VAR__);
             stan::math::fill(k_j, DUMMY_VAR__);
-            current_statement_begin__ = 62;
+            current_statement_begin__ = 66;
             validate_non_negative_index("linf_j", "N_1", N_1);
             Eigen::Matrix<double, Eigen::Dynamic, 1> linf_j(N_1);
             stan::math::initialize(linf_j, DUMMY_VAR__);
             stan::math::fill(linf_j, DUMMY_VAR__);
-            current_statement_begin__ = 64;
+            current_statement_begin__ = 68;
             double kmax;
             (void) kmax;  // dummy to suppress unused var warning
             stan::math::initialize(kmax, DUMMY_VAR__);
             stan::math::fill(kmax, DUMMY_VAR__);
-            current_statement_begin__ = 66;
+            current_statement_begin__ = 70;
             validate_non_negative_index("y_rep", "N", N);
             Eigen::Matrix<double, Eigen::Dynamic, 1> y_rep(N);
             stan::math::initialize(y_rep, DUMMY_VAR__);
             stan::math::fill(y_rep, DUMMY_VAR__);
-            current_statement_begin__ = 67;
+            current_statement_begin__ = 71;
             validate_non_negative_index("y_m", "N", N);
             Eigen::Matrix<double, Eigen::Dynamic, 1> y_m(N);
             stan::math::initialize(y_m, DUMMY_VAR__);
             stan::math::fill(y_m, DUMMY_VAR__);
-            current_statement_begin__ = 68;
+            current_statement_begin__ = 72;
             validate_non_negative_index("y_max", "N", N);
             Eigen::Matrix<double, Eigen::Dynamic, 1> y_max(N);
             stan::math::initialize(y_max, DUMMY_VAR__);
             stan::math::fill(y_max, DUMMY_VAR__);
             // generated quantities statements
-            current_statement_begin__ = 71;
-            stan::math::assign(k, stan::math::exp(((sl * stan::math::log(linf)) + gp)));
-            current_statement_begin__ = 72;
-            stan::math::assign(kmax, stan::math::exp((gp + (sl * stan::math::log(lmax)))));
             current_statement_begin__ = 75;
+            stan::math::assign(kmax, stan::math::exp((gp + (sl * stan::math::log(lmax)))));
+            current_statement_begin__ = 78;
             for (int n = 1; n <= N_1; ++n) {
-                current_statement_begin__ = 76;
+                current_statement_begin__ = 79;
                 stan::model::assign(linf_j, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             (linf + get_base1(r_linf, n, "r_linf", 1)), 
                             "assigning variable linf_j");
-                current_statement_begin__ = 77;
+                current_statement_begin__ = 80;
                 stan::model::assign(k_j, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             stan::math::exp(((sl * stan::math::log(get_base1(linf_j, n, "linf_j", 1))) + gp)), 
                             "assigning variable k_j");
             }
-            current_statement_begin__ = 82;
+            current_statement_begin__ = 85;
             for (int n = 1; n <= N; ++n) {
-                current_statement_begin__ = 83;
+                current_statement_begin__ = 86;
                 stan::model::assign(y_rep, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             (get_base1(linf_j, get_base1(J, n, "J", 1), "linf_j", 1) * (1 - stan::math::exp((-(get_base1(k_j, get_base1(J, n, "J", 1), "k_j", 1)) * (get_base1(x, n, "x", 1) - t0))))), 
                             "assigning variable y_rep");
-                current_statement_begin__ = 84;
+                current_statement_begin__ = 87;
                 stan::model::assign(y_m, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             (linf * (1 - stan::math::exp((-(k) * (get_base1(x, n, "x", 1) - t0))))), 
                             "assigning variable y_m");
-                current_statement_begin__ = 85;
+                current_statement_begin__ = 88;
                 stan::model::assign(y_max, 
                             stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
                             (lmax * (1 - stan::math::exp((-(kmax) * (get_base1(x, n, "x", 1) - t0))))), 
                             "assigning variable y_max");
             }
             // validate, write generated quantities
-            current_statement_begin__ = 60;
-            vars__.push_back(k);
-            current_statement_begin__ = 61;
+            current_statement_begin__ = 65;
             size_t k_j_j_1_max__ = N_1;
             for (size_t j_1__ = 0; j_1__ < k_j_j_1_max__; ++j_1__) {
                 vars__.push_back(k_j(j_1__));
             }
-            current_statement_begin__ = 62;
+            current_statement_begin__ = 66;
             size_t linf_j_j_1_max__ = N_1;
             for (size_t j_1__ = 0; j_1__ < linf_j_j_1_max__; ++j_1__) {
                 vars__.push_back(linf_j(j_1__));
             }
-            current_statement_begin__ = 64;
+            current_statement_begin__ = 68;
             vars__.push_back(kmax);
-            current_statement_begin__ = 66;
+            current_statement_begin__ = 70;
             size_t y_rep_j_1_max__ = N;
             for (size_t j_1__ = 0; j_1__ < y_rep_j_1_max__; ++j_1__) {
                 vars__.push_back(y_rep(j_1__));
             }
-            current_statement_begin__ = 67;
+            current_statement_begin__ = 71;
             size_t y_m_j_1_max__ = N;
             for (size_t j_1__ = 0; j_1__ < y_m_j_1_max__; ++j_1__) {
                 vars__.push_back(y_m(j_1__));
             }
-            current_statement_begin__ = 68;
+            current_statement_begin__ = 72;
             size_t y_max_j_1_max__ = N;
             for (size_t j_1__ = 0; j_1__ < y_max_j_1_max__; ++j_1__) {
                 vars__.push_back(y_max(j_1__));
@@ -730,7 +791,7 @@ public:
                                  bool include_gqs__ = true) const {
         std::stringstream param_name_stream__;
         param_name_stream__.str(std::string());
-        param_name_stream__ << "t0";
+        param_name_stream__ << "l0";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
         param_name_stream__ << "linf";
@@ -767,11 +828,14 @@ public:
                 param_name_stream__ << "r_linf" << '.' << j_1__ + 1;
                 param_names__.push_back(param_name_stream__.str());
             }
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "k";
+            param_names__.push_back(param_name_stream__.str());
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "t0";
+            param_names__.push_back(param_name_stream__.str());
         }
         if (!include_gqs__) return;
-        param_name_stream__.str(std::string());
-        param_name_stream__ << "k";
-        param_names__.push_back(param_name_stream__.str());
         size_t k_j_j_1_max__ = N_1;
         for (size_t j_1__ = 0; j_1__ < k_j_j_1_max__; ++j_1__) {
             param_name_stream__.str(std::string());
@@ -811,7 +875,7 @@ public:
                                    bool include_gqs__ = true) const {
         std::stringstream param_name_stream__;
         param_name_stream__.str(std::string());
-        param_name_stream__ << "t0";
+        param_name_stream__ << "l0";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
         param_name_stream__ << "linf";
@@ -848,11 +912,14 @@ public:
                 param_name_stream__ << "r_linf" << '.' << j_1__ + 1;
                 param_names__.push_back(param_name_stream__.str());
             }
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "k";
+            param_names__.push_back(param_name_stream__.str());
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "t0";
+            param_names__.push_back(param_name_stream__.str());
         }
         if (!include_gqs__) return;
-        param_name_stream__.str(std::string());
-        param_name_stream__ << "k";
-        param_names__.push_back(param_name_stream__.str());
         size_t k_j_j_1_max__ = N_1;
         for (size_t j_1__ = 0; j_1__ < k_j_j_1_max__; ++j_1__) {
             param_name_stream__.str(std::string());

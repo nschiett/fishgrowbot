@@ -1,4 +1,4 @@
-// generated with brms 2.8.0, modified by N.S.
+// generated with brms 2.8.0, modified by N.M.D.S.
 functions {
 }
 data {
@@ -13,16 +13,19 @@ data {
   int<lower=1> N_1;    // # of individuals
   int<lower=1> J[N]; // vector of integers for each unique ID
 
-  real linf_prior;
-  real lmax;
+  real<lower=0> linf_prior;
+  real<lower=0> linf_sd;
+  real<lower=0> lmax;
+  real<lower=0> l0_prior;
+  real<lower=0> l0_sd;
 }
 transformed data {
 }
 parameters {
-  real t0;  // population-level t0
-  real linf;  // population-level linf
-  real sl;  // population-level sl
-  real gp;  // population-level gp
+  real l0;  // population-level t0
+  real<lower=0,upper=lmax> linf;  // population-level linf
+  real<upper=0> sl;  // population-level sl
+  real<lower=0> gp;  // population-level gp
   real<lower=0> sigma;  // residual SD
   vector<lower=0>[1] sd_linf;  // standard deviation for linf per individual
   vector[N_1] z_linf[1];  // unscaled effects on linf per individual
@@ -30,6 +33,8 @@ parameters {
 transformed parameters {
   // group-level effects
   vector[N_1] r_linf = (sd_linf[1] * (z_linf[1]));  //scaled effects on linf per individual
+  real<lower=0> k = exp(sl * log(linf) + gp);
+  real t0 = log(1-(l0/linf))/k;
 }
 model {
   vector[N] nlp_t0 = X * t0; // Vectorize all parameters
@@ -57,7 +62,6 @@ model {
 
 }
 generated quantities {
-  real k;
   vector[N_1] k_j;
   vector[N_1] linf_j;
 
@@ -68,7 +72,6 @@ generated quantities {
   vector[N] y_max; // prediction based on maximum length and kmax
 
      // k
-  k = exp(sl * log(linf) + gp);
   kmax = exp(gp + (sl*log(lmax)));
 
   // group-level k and linf per individual

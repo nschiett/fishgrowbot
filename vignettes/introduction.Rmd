@@ -1,0 +1,92 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  fig.height = 6, 
+  fig.width = 8
+)
+rstan::rstan_options(silent = TRUE, open_progress=FALSE,show_messages=FALSE)
+```
+
+First things first: we need to load some packages. 
+```{r setup}
+library(fishgrowbot)
+library(dplyr)
+```
+
+To introduce the functionalities of `fishgrowbot`, we look at an example for *Epinephelus merra*. 
+The function `bcalc()` returns both a dataframe with the back-calculated lengths and their uncertainty and the model object for more details on the fit of the bc stan model. 
+
+```{r, bc, message = FALSE}
+# get data
+em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
+
+# back-calculation
+bc <- fishgrowbot::bcalc(data = em)
+head(bc$lengths)
+```
+
+The function `bcplot` helps visualize the back calculation. Some examples:
+
+```{r, plot1a, message = FALSE}
+bcplot(bc$lengths)
+```
+
+```{r, plot1b, message = FALSE}
+bcplot(bc$lengths, colorid = TRUE)
+```
+
+```{r, plot1c, message = FALSE}
+bcplot(bc$lengths, colorid = TRUE, facet = TRUE, error = TRUE)
+```
+
+Then, we can fit the hierarchical Von Bertalanffy growthmodel that allows for the estimation of multiple parameters.     
+
+```{r, growthmodel, message = FALSE}
+# fit growth model
+growthmodel <- fishgrowbot::growthreg(length = bc$lengths$l_m/10, 
+                                      age =  bc$lengths$age,
+                                      id =  bc$lengths$id, 
+                                      lmax = 32, 
+                                      linf_m = 28, 
+                                      linf_sd = 5, 
+                                      l0_m = 0.15, 
+                                      l0_sd = 0.015, 
+                                      iter = 4000,
+                                      open_progress = FALSE,
+                                      plot = FALSE)
+
+# summary growth parameters
+growthmodel$summary
+```
+
+
+Now we can visualize the fit with the function `gmplot()`.
+
+```{r, plot2a, message = FALSE}
+gmplot(growthmodel)
+```
+
+Setting id to TRUE, we can see the individual growth curves.
+
+```{r, plot2b, message = FALSE}
+gmplot(growthmodel, id = TRUE)
+```
+
+If there are many individuals, the id graph can quickly get crowded. Set facet = TRUE to have a subplot per individual. 
+
+```{r, plot2c, message = FALSE}
+gmplot(growthmodel, id = TRUE, facet = TRUE)
+```
+
+
+

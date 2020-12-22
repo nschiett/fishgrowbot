@@ -1,14 +1,17 @@
 #' A function to extract growth parameters for fishes from back-calculation data
 #'
 #' @author Nina M. D. Schiettekatte
-#' @param length Numerical vector with length (CAUTION: must be in cm)
-#' @param age    Numerical vector with age
-#' @param id     Character vector with fish id
-#' @param linf_m Prior for linf
-#' @param lmax   maximum size. Based on this value, maximum growth rate kmax will be computed.
-#' @param plot   option to plot model fit (TRUE or FALSE)
+#' @param length  Numerical vector with length (CAUTION: must be in cm)
+#' @param age     Numerical vector with age
+#' @param id      Character vector with fish id
+#' @param linf_m  Prior for linf
+#' @param linf_sd Prior sd for linf (default set to 10% of linf_m)
+#' @param l0_m    Prior for l0
+#' @param l0_sd   Prior sd for l0 (default set to 10% of l0_m)
+#' @param lmax    maximum size. Based on this value, maximum growth rate kmax will be computed.
+#' @param plot    option to plot model fit (TRUE or FALSE)
 #' @param ...     Additional arguments, see ?rstan::sampling()
-#' @details      Returns a list with three elements.
+#' @details       Returns a list with three elements.
 #' First element is a dataframe with estimates for linf, k and t0, sl and gp.
 #' There is a hierarchical structure for linf and k, so that there is a unique estimate for these parameters per individual (linf_j, k_j).
 #' linf and k are the population level estimates of linf and k. kmax is the standardised growth parameter, depending on lmax
@@ -28,12 +31,13 @@
 #' em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
 #' bc <- fishgrowbot::bcalc(data = em)$lengths
 #' fishgrowbot::growthreg(length = bc$l_m/10, age = bc$age,
-#' id = bc$id, lmax = 32, linf_m = 28, iter = 2000, chains = 1)
+#' id = bc$id, lmax = 32, linf_m = 28, linf_sd = 5, l0_m = 0.15, l0_sd = 0.015,
+#' iter = 4000, chains = 1)
 #'
 
-
-
-growthreg <- function(length, age, id, lmax = 20, linf_m, plot = TRUE, ...){
+growthreg <- function(length, age, id, lmax, linf_m = 0.8*lmax,
+                      linf_sd = 0.2*linf_m, l0_m, l0_sd = 0.2*l0,
+                      plot = TRUE, ...){
 
   requireNamespace("ggplot2")
   requireNamespace("rstan")
@@ -45,6 +49,9 @@ growthreg <- function(length, age, id, lmax = 20, linf_m, plot = TRUE, ...){
     x = age,
     J = as.integer(as.factor(as.character(id))),
     linf_prior = linf_m,
+    linf_sd = linf_sd,
+    l0_prior = l0_m,
+    l0_sd = l0_sd,
     lmax = lmax,
     X = rep(1, length(length))
   )
@@ -53,7 +60,7 @@ growthreg <- function(length, age, id, lmax = 20, linf_m, plot = TRUE, ...){
 
   summary <-  as.data.frame(rstan::summary(fit)$summary)
 
-  result <- summary[c("k", "linf", "t0", "kmax"),1:8]
+  result <- summary[c("k", "linf", "l0", "t0", "kmax"),1:8]
 
   ee <- rstan::extract(fit)
   y_m <- ee$y_m
