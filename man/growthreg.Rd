@@ -4,7 +4,18 @@
 \alias{growthreg}
 \title{A function to extract growth parameters for fishes from back-calculation data}
 \usage{
-growthreg(length, age, id, lmax = 20, linf_m, plot = TRUE, ...)
+growthreg(
+  length,
+  age,
+  id,
+  lmax,
+  linf_m = 0.8 * lmax,
+  linf_sd = 0.2 * linf_m,
+  l0_m,
+  l0_sd = 0.2 * l0,
+  plot = TRUE,
+  ...
+)
 }
 \arguments{
 \item{length}{Numerical vector with length (CAUTION: must be in cm)}
@@ -16,6 +27,12 @@ growthreg(length, age, id, lmax = 20, linf_m, plot = TRUE, ...)
 \item{lmax}{maximum size. Based on this value, maximum growth rate kmax will be computed.}
 
 \item{linf_m}{Prior for linf}
+
+\item{linf_sd}{Prior sd for linf (default set to 10\% of linf_m)}
+
+\item{l0_m}{Prior for l0}
+
+\item{l0_sd}{Prior sd for l0 (default set to 10\% of l0_m)}
 
 \item{plot}{option to plot model fit (TRUE or FALSE)}
 
@@ -36,16 +53,15 @@ The third element is the entire stanfit object.
 }
 \examples{
 
-em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
+\dontrun{
+em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data,
+species == "Epinephelus merra", location == "Moorea")
 bc <- fishgrowbot::bcalc(data = em)$lengths
 fishgrowbot::growthreg(length = bc$l_m/10, age = bc$age,
-id = bc$id, lmax = 32, linf_m = 28, iter = 2000, chains = 1)
-
+id = bc$id, lmax = 32, linf_m = 28, linf_sd = 5, l0_m = 0.15, l0_sd = 0.015,
+iter = 4000, chains = 1)
+}
 }
 \author{
 Nina M. D. Schiettekatte
 }
-\keyword{Bertalanfy}
-\keyword{Von}
-\keyword{fish,}
-\keyword{growth,}

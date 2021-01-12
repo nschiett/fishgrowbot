@@ -5,13 +5,13 @@
 #' @param age     Numerical vector with age
 #' @param id      Character vector with fish id
 #' @param linf_m  Prior for linf
-#' @param linf_sd Prior sd for linf (default set to 10% of linf_m)
+#' @param linf_sd Prior sd for linf (default set to 10\% of linf_m)
 #' @param l0_m    Prior for l0
-#' @param l0_sd   Prior sd for l0 (default set to 10% of l0_m)
+#' @param l0_sd   Prior sd for l0 (default set to 10\% of l0_m)
 #' @param lmax    maximum size. Based on this value, maximum growth rate kmax will be computed.
 #' @param plot    option to plot model fit (TRUE or FALSE)
 #' @param ...     Additional arguments, see ?rstan::sampling()
-#' @details       Returns a list with three elements.
+#' @details Returns a list with three elements.
 #' First element is a dataframe with estimates for linf, k and t0, sl and gp.
 #' There is a hierarchical structure for linf and k, so that there is a unique estimate for these parameters per individual (linf_j, k_j).
 #' linf and k are the population level estimates of linf and k. kmax is the standardised growth parameter, depending on lmax
@@ -20,20 +20,23 @@
 #' and the fitted regression er individual (yrep_m, yrep_sd, yrep_lb, yrep_ub)
 #' The third element is the entire stanfit object.
 #'
-#' @keywords      fish, growth, Von Bertalanfy
 #' @import ggplot2
 #' @import dplyr
 #' @import rstan
+#' @importFrom stats quantile sd
+#'
 #' @export growthreg
 #'
 #' @examples
 #'
-#' em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
+#'\dontrun{
+#' em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data,
+#' species == "Epinephelus merra", location == "Moorea")
 #' bc <- fishgrowbot::bcalc(data = em)$lengths
 #' fishgrowbot::growthreg(length = bc$l_m/10, age = bc$age,
 #' id = bc$id, lmax = 32, linf_m = 28, linf_sd = 5, l0_m = 0.15, l0_sd = 0.015,
 #' iter = 4000, chains = 1)
-#'
+#'}
 
 growthreg <- function(length, age, id, lmax, linf_m = 0.8*lmax,
                       linf_sd = 0.2*linf_m, l0_m, l0_sd = 0.2*l0,
@@ -41,6 +44,8 @@ growthreg <- function(length, age, id, lmax, linf_m = 0.8*lmax,
 
   requireNamespace("ggplot2")
   requireNamespace("rstan")
+
+  l0 <- NULL
 
   data <- list(
     N = length(length),
@@ -79,9 +84,10 @@ growthreg <- function(length, age, id, lmax, linf_m = 0.8*lmax,
   if(plot){
     p <-
       ggplot() +
-      geom_point(aes(x = age, y = length)) +
-      geom_ribbon(aes(x = age, ymin = ypred_lb, ymax = ypred_ub), alpha = 0.4, data = pred) +
-      geom_line(aes(x = age, y = ypred_m), data = pred) +
+      geom_point(aes(x = .data$age, y = .data$length)) +
+      geom_ribbon(aes(x = .data$age, ymin = .data$ypred_lb, ymax = .data$ypred_ub),
+                  alpha = 0.4, data = pred) +
+      geom_line(aes(x = .data$age, y = .data$ypred_m), data = pred) +
       theme_bw()
 
     print(p)

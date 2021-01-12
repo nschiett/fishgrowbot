@@ -25,7 +25,7 @@ It contains:
 * Functions to visualize results.     
 
 
-# Installing and loading fishgrowbot
+## Installing and loading fishgrowbot
 
 `fishgrowbot` uses Markov Chain Monte Carlo simulations provided by
 [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
@@ -37,14 +37,16 @@ Therefore, the first step is to install
 The best way to install the latest version of `fishgrowbot` is
 to install it from GitHub.
 
-``` {r, echo = FALSE}
+``` {r, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("nschiett/fishgrowbot", dependencies=TRUE)
 library(fishgrowbot)
 ```
 
+## Use
+See the package documentation and introduction vignette. 
 
-# Citation
+## Citation
 
 ```{r, echo = FALSE}
 citation("fishgrowbot")

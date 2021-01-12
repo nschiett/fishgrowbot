@@ -30,6 +30,8 @@
 
 bcalc <- function(data, ...){
 
+  agecap <- sd <- quantile <- NULL
+
   if (1 %in% data$agecap){
     data <- dplyr::filter(data, agecap > 1)
     warning("Removing individuals of age 1")

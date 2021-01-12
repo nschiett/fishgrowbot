@@ -12,7 +12,6 @@
 #'
 #' @import ggplot2
 #'
-#' @examples
 bcplot <- function(bcdata, colorid = FALSE,
                    facet = FALSE, legend = FALSE,
                    error = FALSE){
@@ -75,11 +74,10 @@ bcplot <- function(bcdata, colorid = FALSE,
 #' @param error Option to show 95\%CI around bc estimates (default = FALSE)
 #' @param legend Option to add color legend (defaul = FALSE)
 #'
-#' @return
+#' @return A plot
 #' @export
 #'
-#' @examples
-#'
+
 gmplot <- function(gmdata, id = FALSE, facet = FALSE,
                    legend = FALSE, error = TRUE){
 
@@ -89,12 +87,12 @@ gmplot <- function(gmdata, id = FALSE, facet = FALSE,
 
   if (error == TRUE) {
     p <- p +
-    geom_ribbon(aes(x = age, ymin = ypred_lb, ymax = ypred_ub),
+    geom_ribbon(aes(x = .data$age, ymin = .data$ypred_lb, ymax = .data$ypred_ub),
                 alpha = 0.3, data = pred)
   }
 
   p <- p +
-    geom_line(aes(x = age, y = ypred_m),
+    geom_line(aes(x = .data$age, y = .data$ypred_m),
               size = 1, data = pred) +
     theme_bw()
 
@@ -102,12 +100,13 @@ gmplot <- function(gmdata, id = FALSE, facet = FALSE,
 
     if (error == TRUE){
       p <- p +
-        geom_ribbon(aes(x = age, ymin = yrep_lb, ymax = yrep_ub, fill = id),
+        geom_ribbon(aes(x = .data$age, ymin = .data$yrep_lb, ymax = .data$yrep_ub,
+                        fill = .data$id),
                     alpha = 0.3, data = pred)
     }
 
     p <- p +
-      geom_line(aes(x = age, y = yrep_m, color = id),
+      geom_line(aes(x = .data$age, y = .data$yrep_m, color = .data$id),
                 alpha = 0.8, size = 1, data = pred)
 
   }

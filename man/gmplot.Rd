@@ -18,11 +18,8 @@ gmplot(gmdata, id = FALSE, facet = FALSE, legend = FALSE, error = TRUE)
 \item{error}{Option to show 95\%CI around bc estimates (default = FALSE)}
 }
 \value{
-
+A plot
 }
 \description{
 Function to visualize the fitted hierarchical growth model
-}
-\examples{
-
 }
