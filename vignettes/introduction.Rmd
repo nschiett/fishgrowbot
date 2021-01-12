@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 )
 rstan::rstan_options(silent = TRUE, open_progress=FALSE,show_messages=FALSE)
 ```
+In this vignette, we provide an introduction to `fishgrowbot` through a case study. For theoretical background of the methodology, see [Morat et al. (2020)](https://doi.org/10.1038/s41597-020-00711-y)         
+
 
 First things first: we need to load some packages. 
 ```{r setup}
@@ -24,7 +26,16 @@ library(dplyr)
 ```
 
 To introduce the functionalities of `fishgrowbot`, we look at an example for *Epinephelus merra*. 
-The function `bcalc()` returns both a dataframe with the back-calculated lengths and their uncertainty and the model object for more details on the fit of the bc stan model. 
+The function `bcalc()` returns both a dataframe with the back-calculated lengths and their uncertainty and the model object for more details on the fit of the bc stan model.   
+The input data should contain:
+ \itemize{
+   \item{id:} unique fish id per individual
+   \item{radi:} measurements of otolith growth rings (in mm)
+   \item{agei:} age estimation of fish
+   \item{lencap:} length at capture (in mm)
+   \item{radcap:} radius of otolith at capture (in mm)
+   \item{l0p:} length of fish at hatching (in mm)
+ }
 
 ```{r, bc, message = FALSE}
 # get data
@@ -49,7 +60,7 @@ bcplot(bc$lengths, colorid = TRUE)
 bcplot(bc$lengths, colorid = TRUE, facet = TRUE, error = TRUE)
 ```
 
-Then, we can fit the hierarchical Von Bertalanffy growthmodel that allows for the estimation of multiple parameters.     
+Then, we can fit the hierarchical Von Bertalanffy growthmodel that allows for the estimation of multiple parameters. Importantly, length measures should be given in cm.        
 
 ```{r, growthmodel, message = FALSE}
 # fit growth model
