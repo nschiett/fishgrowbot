@@ -59,12 +59,14 @@ jobs:
           sudo -s eval "$sysreqs"
           sudo apt-get -y install devscripts
           sudo apt-get -y install libtbb-dev
+          export TMPDIR=~/tmp
 
       - name: Install OSX system dependencies
         if: runner.os == 'macOS'
         run: |
           brew install checkbashisms
           brew install tbb
+          export TMPDIR=~/tmp
 
       - name: Install dependencies
         run: |

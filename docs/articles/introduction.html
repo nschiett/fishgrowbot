@@ -95,7 +95,8 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span></pre></body></html></div>
-<p>To introduce the functionalities of <code>fishgrowbot</code>, we look at an example for <em>Epinephelus merra</em>. The function <code><a href="../reference/bcalc.html">bcalc()</a></code> returns both a dataframe with the back-calculated lengths and their uncertainty and the model object for more details on the fit of the bc stan model.</p>
+<p>To introduce the functionalities of <code>fishgrowbot</code>, we look at an example for <em>Epinephelus merra</em>. The function <code><a href="../reference/bcalc.html">bcalc()</a></code> returns both a dataframe with the back-calculated lengths and their uncertainty and the model object for more details on the fit of the bc stan model.<br>
+The input data should contain: </p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># get data</span>
 <span class="no">em</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw pkg">fishgrowbot</span><span class="kw ns">::</span><span class="no"><a href="../reference/coral_reef_fishes_data.html">coral_reef_fishes_data</a></span>, <span class="no">species</span> <span class="kw">==</span> <span class="st">"Epinephelus merra"</span>, <span class="no">location</span> <span class="kw">==</span> <span class="st">"Moorea"</span>)
 
@@ -122,15 +123,15 @@
 <span class="co">#&gt; Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 1: </span>
-<span class="co">#&gt; Chain 1:  Elapsed Time: 0.695663 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 1:                0.204247 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 1:                0.89991 seconds (Total)</span>
+<span class="co">#&gt; Chain 1:  Elapsed Time: 0.786839 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 1:                0.276178 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 1:                1.06302 seconds (Total)</span>
 <span class="co">#&gt; Chain 1: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 2).</span>
 <span class="co">#&gt; Chain 2: </span>
-<span class="co">#&gt; Chain 2: Gradient evaluation took 2.1e-05 seconds</span>
-<span class="co">#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.</span>
+<span class="co">#&gt; Chain 2: Gradient evaluation took 2.3e-05 seconds</span>
+<span class="co">#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.</span>
 <span class="co">#&gt; Chain 2: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 2: </span>
 <span class="co">#&gt; Chain 2: </span>
@@ -147,15 +148,15 @@
 <span class="co">#&gt; Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 2: </span>
-<span class="co">#&gt; Chain 2:  Elapsed Time: 0.707309 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 2:                0.202133 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 2:                0.909442 seconds (Total)</span>
+<span class="co">#&gt; Chain 2:  Elapsed Time: 1.10952 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 2:                0.354672 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 2:                1.4642 seconds (Total)</span>
 <span class="co">#&gt; Chain 2: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 3).</span>
 <span class="co">#&gt; Chain 3: </span>
-<span class="co">#&gt; Chain 3: Gradient evaluation took 2.1e-05 seconds</span>
-<span class="co">#&gt; Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.</span>
+<span class="co">#&gt; Chain 3: Gradient evaluation took 2.3e-05 seconds</span>
+<span class="co">#&gt; Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.23 seconds.</span>
 <span class="co">#&gt; Chain 3: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 3: </span>
 <span class="co">#&gt; Chain 3: </span>
@@ -172,15 +173,15 @@
 <span class="co">#&gt; Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 3: </span>
-<span class="co">#&gt; Chain 3:  Elapsed Time: 0.7006 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 3:                0.214633 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 3:                0.915233 seconds (Total)</span>
+<span class="co">#&gt; Chain 3:  Elapsed Time: 0.717489 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 3:                0.283825 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 3:                1.00131 seconds (Total)</span>
 <span class="co">#&gt; Chain 3: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'stan_bcalc' NOW (CHAIN 4).</span>
 <span class="co">#&gt; Chain 4: </span>
-<span class="co">#&gt; Chain 4: Gradient evaluation took 5.7e-05 seconds</span>
-<span class="co">#&gt; Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.57 seconds.</span>
+<span class="co">#&gt; Chain 4: Gradient evaluation took 2.1e-05 seconds</span>
+<span class="co">#&gt; Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.21 seconds.</span>
 <span class="co">#&gt; Chain 4: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 4: </span>
 <span class="co">#&gt; Chain 4: </span>
@@ -197,18 +198,18 @@
 <span class="co">#&gt; Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 4: </span>
-<span class="co">#&gt; Chain 4:  Elapsed Time: 0.604913 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 4:                0.210631 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 4:                0.815544 seconds (Total)</span>
+<span class="co">#&gt; Chain 4:  Elapsed Time: 0.834444 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 4:                0.342155 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 4:                1.1766 seconds (Total)</span>
 <span class="co">#&gt; Chain 4:</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">bc</span>$<span class="no">lengths</span>)
 <span class="co">#&gt;                   id age      l_m         l_sd     l_lb     l_ub</span>
-<span class="co">#&gt; 1 EP_ME_MO_03_16_001   0   1.5000 1.113400e-15   1.5000   1.5000</span>
-<span class="co">#&gt; 2 EP_ME_MO_03_16_001   1 154.3283 5.985789e+00 142.4398 165.9076</span>
-<span class="co">#&gt; 3 EP_ME_MO_03_16_001   2 178.4153 4.736356e+00 168.9276 187.4974</span>
-<span class="co">#&gt; 4 EP_ME_MO_03_16_001   3 192.1792 3.879471e+00 184.3740 199.5839</span>
-<span class="co">#&gt; 5 EP_ME_MO_03_16_001   4 205.6757 2.946961e+00 199.7230 211.2765</span>
-<span class="co">#&gt; 6 EP_ME_MO_03_16_001   5 217.7727 2.038236e+00 213.6419 221.6323</span></pre></body></html></div>
+<span class="co">#&gt; 1 EP_ME_MO_03_16_001   0   1.5000 1.146381e-15   1.5000   1.5000</span>
+<span class="co">#&gt; 2 EP_ME_MO_03_16_001   1 154.4525 5.954176e+00 142.7840 166.5439</span>
+<span class="co">#&gt; 3 EP_ME_MO_03_16_001   2 178.5139 4.708856e+00 169.2065 187.9892</span>
+<span class="co">#&gt; 4 EP_ME_MO_03_16_001   3 192.2601 3.855876e+00 184.6052 199.9818</span>
+<span class="co">#&gt; 5 EP_ME_MO_03_16_001   4 205.7372 2.928284e+00 199.9006 211.5753</span>
+<span class="co">#&gt; 6 EP_ME_MO_03_16_001   5 217.8153 2.024873e+00 213.7659 221.8370</span></pre></body></html></div>
 <p>The function <code>bcplot</code> helps visualize the back calculation. Some examples:</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/bcplot.html">bcplot</a></span>(<span class="no">bc</span>$<span class="no">lengths</span>)</pre></body></html></div>
 <p><img src="introduction_files/figure-html/plot1a-1.png" width="768"></p>
@@ -216,7 +217,7 @@
 <p><img src="introduction_files/figure-html/plot1b-1.png" width="768"></p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/bcplot.html">bcplot</a></span>(<span class="no">bc</span>$<span class="no">lengths</span>, <span class="kw">colorid</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">error</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p><img src="introduction_files/figure-html/plot1c-1.png" width="768"></p>
-<p>Then, we can fit the hierarchical Von Bertalanffy growthmodel that allows for the estimation of multiple parameters.</p>
+<p>Then, we can fit the hierarchical Von Bertalanffy growthmodel that allows for the estimation of multiple parameters. Importantly, length measures should be given in cm.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co"># fit growth model</span>
 <span class="no">growthmodel</span> <span class="kw">&lt;-</span> <span class="kw pkg">fishgrowbot</span><span class="kw ns">::</span><span class="fu"><a href="../reference/growthreg.html">growthreg</a></span>(<span class="kw">length</span> <span class="kw">=</span> <span class="no">bc</span>$<span class="no">lengths</span>$<span class="no">l_m</span>/<span class="fl">10</span>,
                                       <span class="kw">age</span> <span class="kw">=</span>  <span class="no">bc</span>$<span class="no">lengths</span>$<span class="no">age</span>,
@@ -232,8 +233,8 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'vonbert' NOW (CHAIN 1).</span>
 <span class="co">#&gt; Chain 1: </span>
-<span class="co">#&gt; Chain 1: Gradient evaluation took 8.2e-05 seconds</span>
-<span class="co">#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.82 seconds.</span>
+<span class="co">#&gt; Chain 1: Gradient evaluation took 0.000137 seconds</span>
+<span class="co">#&gt; Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.37 seconds.</span>
 <span class="co">#&gt; Chain 1: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 1: </span>
 <span class="co">#&gt; Chain 1: </span>
@@ -250,15 +251,15 @@
 <span class="co">#&gt; Chain 1: Iteration: 3600 / 4000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 1: Iteration: 4000 / 4000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 1: </span>
-<span class="co">#&gt; Chain 1:  Elapsed Time: 7.02101 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 1:                6.06853 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 1:                13.0895 seconds (Total)</span>
+<span class="co">#&gt; Chain 1:  Elapsed Time: 7.88674 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 1:                11.5991 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 1:                19.4858 seconds (Total)</span>
 <span class="co">#&gt; Chain 1: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'vonbert' NOW (CHAIN 2).</span>
 <span class="co">#&gt; Chain 2: </span>
-<span class="co">#&gt; Chain 2: Gradient evaluation took 4.8e-05 seconds</span>
-<span class="co">#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.48 seconds.</span>
+<span class="co">#&gt; Chain 2: Gradient evaluation took 4.7e-05 seconds</span>
+<span class="co">#&gt; Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.47 seconds.</span>
 <span class="co">#&gt; Chain 2: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 2: </span>
 <span class="co">#&gt; Chain 2: </span>
@@ -275,15 +276,15 @@
 <span class="co">#&gt; Chain 2: Iteration: 3600 / 4000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 2: Iteration: 4000 / 4000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 2: </span>
-<span class="co">#&gt; Chain 2:  Elapsed Time: 7.03452 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 2:                10.5655 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 2:                17.6 seconds (Total)</span>
+<span class="co">#&gt; Chain 2:  Elapsed Time: 7.28307 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 2:                6.72137 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 2:                14.0044 seconds (Total)</span>
 <span class="co">#&gt; Chain 2: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'vonbert' NOW (CHAIN 3).</span>
 <span class="co">#&gt; Chain 3: </span>
-<span class="co">#&gt; Chain 3: Gradient evaluation took 4.7e-05 seconds</span>
-<span class="co">#&gt; Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.47 seconds.</span>
+<span class="co">#&gt; Chain 3: Gradient evaluation took 4.6e-05 seconds</span>
+<span class="co">#&gt; Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.46 seconds.</span>
 <span class="co">#&gt; Chain 3: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 3: </span>
 <span class="co">#&gt; Chain 3: </span>
@@ -300,15 +301,15 @@
 <span class="co">#&gt; Chain 3: Iteration: 3600 / 4000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 3: Iteration: 4000 / 4000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 3: </span>
-<span class="co">#&gt; Chain 3:  Elapsed Time: 7.00705 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 3:                7.15542 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 3:                14.1625 seconds (Total)</span>
+<span class="co">#&gt; Chain 3:  Elapsed Time: 7.92326 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 3:                6.26595 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 3:                14.1892 seconds (Total)</span>
 <span class="co">#&gt; Chain 3: </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; SAMPLING FOR MODEL 'vonbert' NOW (CHAIN 4).</span>
 <span class="co">#&gt; Chain 4: </span>
-<span class="co">#&gt; Chain 4: Gradient evaluation took 4.7e-05 seconds</span>
-<span class="co">#&gt; Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.47 seconds.</span>
+<span class="co">#&gt; Chain 4: Gradient evaluation took 6.2e-05 seconds</span>
+<span class="co">#&gt; Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.62 seconds.</span>
 <span class="co">#&gt; Chain 4: Adjust your expectations accordingly!</span>
 <span class="co">#&gt; Chain 4: </span>
 <span class="co">#&gt; Chain 4: </span>
@@ -325,25 +326,25 @@
 <span class="co">#&gt; Chain 4: Iteration: 3600 / 4000 [ 90%]  (Sampling)</span>
 <span class="co">#&gt; Chain 4: Iteration: 4000 / 4000 [100%]  (Sampling)</span>
 <span class="co">#&gt; Chain 4: </span>
-<span class="co">#&gt; Chain 4:  Elapsed Time: 7.00582 seconds (Warm-up)</span>
-<span class="co">#&gt; Chain 4:                9.04517 seconds (Sampling)</span>
-<span class="co">#&gt; Chain 4:                16.051 seconds (Total)</span>
+<span class="co">#&gt; Chain 4:  Elapsed Time: 8.23324 seconds (Warm-up)</span>
+<span class="co">#&gt; Chain 4:                7.56466 seconds (Sampling)</span>
+<span class="co">#&gt; Chain 4:                15.7979 seconds (Total)</span>
 <span class="co">#&gt; Chain 4:</span>
 
 <span class="co"># summary growth parameters</span>
 <span class="no">growthmodel</span>$<span class="no">summary</span>
 <span class="co">#&gt;             mean      se_mean         sd        2.5%         25%         50%</span>
-<span class="co">#&gt; k     0.64634572 0.0011404186 0.05374246  0.55018646  0.60982937  0.64230940</span>
-<span class="co">#&gt; linf 14.88873099 0.0322420961 0.99903451 12.98102625 14.23490362 14.87472978</span>
-<span class="co">#&gt; l0    0.42465910 0.0034092529 0.23528580 -0.03461534  0.26886864  0.42507354</span>
-<span class="co">#&gt; t0   -0.04589778 0.0003851786 0.02659385 -0.10265345 -0.06293716 -0.04516695</span>
-<span class="co">#&gt; kmax  0.39642706 0.0007154907 0.03996568  0.32342671  0.36821890  0.39450461</span>
+<span class="co">#&gt; k     0.64706450 0.0011944428 0.05344593  0.54949341  0.61090339  0.64392302</span>
+<span class="co">#&gt; linf 14.92508523 0.0330156691 0.98766300 13.04443523 14.25423827 14.90482059</span>
+<span class="co">#&gt; l0    0.42168745 0.0032473940 0.23695737 -0.04595966  0.26193112  0.42231095</span>
+<span class="co">#&gt; t0   -0.04543783 0.0003660164 0.02669657 -0.10062553 -0.06289181 -0.04436477</span>
+<span class="co">#&gt; kmax  0.40044795 0.0009442174 0.04246105  0.32389964  0.37100868  0.39804774</span>
 <span class="co">#&gt;              75%        97.5%</span>
-<span class="co">#&gt; k     0.67875721  0.762262032</span>
-<span class="co">#&gt; linf 15.54411172 16.887861745</span>
-<span class="co">#&gt; l0    0.57853829  0.899468348</span>
-<span class="co">#&gt; t0   -0.02791772  0.003535532</span>
-<span class="co">#&gt; kmax  0.42234350  0.481110376</span></pre></body></html></div>
+<span class="co">#&gt; k     0.67980365  0.758748634</span>
+<span class="co">#&gt; linf 15.57459516 16.902043573</span>
+<span class="co">#&gt; l0    0.58096718  0.891385668</span>
+<span class="co">#&gt; t0   -0.02699436  0.004509169</span>
+<span class="co">#&gt; kmax  0.42802218  0.490280888</span></pre></body></html></div>
 <p>Now we can visualize the fit with the function <code><a href="../reference/gmplot.html">gmplot()</a></code>.</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/gmplot.html">gmplot</a></span>(<span class="no">growthmodel</span>)</pre></body></html></div>
 <p><img src="introduction_files/figure-html/plot2a-1.png" width="768"></p>

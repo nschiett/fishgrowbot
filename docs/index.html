@@ -74,8 +74,6 @@
 
 <ul>
 <li><a href="#fishgrowbot-fish-growth-curves-through-back-calculation-of-otoliths-rings-in-a-bayesian-framework">fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework</a></li>
-<li><a href="#installing-and-loading-fishgrowbot">Installing and loading fishgrowbot</a></li>
-<li><a href="#citation">Citation</a></li>
 </ul>
 <!-- badges: start -->
 <p><img src="reference/figures/fishgrowbot_logo_white.png" width="120" alt="fishgrowbot logo"></p>
@@ -87,109 +85,48 @@ It contains:<br>
 * A function <code><a href="reference/bcalc.html">bcalc()</a></code> to perform the back-calculations which yields length-at-age estimations with measures of uncertainty.<br>
 * A function called <code><a href="reference/growthreg.html">growthreg()</a></code> to fit the Von Bertalanffy growth model.<br>
 * Functions to visualize results.</p>
-</div>
-<div id="installing-and-loading-fishgrowbot" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installing-and-loading-fishgrowbot" class="anchor"></a>Installing and loading fishgrowbot</h1>
+<div id="installing-and-loading-fishgrowbot" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-and-loading-fishgrowbot" class="anchor"></a>Installing and loading fishgrowbot</h2>
 <p><code>fishgrowbot</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">stan</a>.</p>
 <div id="github" class="section level3">
 <h3 class="hasAnchor">
 <a href="#github" class="anchor"></a>GitHub</h3>
 <p>The best way to install the latest version of <code>fishgrowbot</code> is to install it from GitHub.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">## Installing package into '/Users/runner/work/_temp/Library'</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">## (as 'lib' is unspecified)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">## also installing the dependencies 'utf8', 'sys', 'BH', 'pillar', 'pkgconfig', 'vctrs', 'askpass', 'credentials', 'zip', 'gitcreds', 'ini', 'lazyeval', 'later', 'diffobj', 'rematch2', 'tibble', 'clipr', 'crayon', 'curl', 'fs', 'gert', 'gh', 'lifecycle', 'purrr', 'rappdirs', 'rprojroot', 'whisker', 'processx', 'R6', 'assertthat', 'fansi', 'rex', 'htmlwidgets', 'crosstalk', 'promises', 'openssl', 'prettyunits', 'xopen', 'brew', 'commonmark', 'Rcpp', 'xml2', 'brio', 'praise', 'ps', 'waldo', 'usethis', 'callr', 'cli', 'covr', 'desc', 'DT', 'ellipsis', 'httr', 'memoise', 'pkgbuild', 'pkgload', 'rcmdcheck', 'remotes', 'roxygen2', 'rstudioapi', 'rversions', 'sessioninfo', 'testthat', 'withr'</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">## </a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">## The downloaded binary packages are in</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpANgBfG/downloaded_packages</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">## Using bundled GitHub PAT. Please add your own PAT to the env var `GITHUB_PAT`</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">## Downloading GitHub repo nschiett/fishgrowbot@HEAD</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">## backports    (NA -&gt; 1.2.1    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">## matrixStats  (NA -&gt; 0.57.0   ) [CRAN]</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">## checkmate    (NA -&gt; 2.0.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">## gtable       (NA -&gt; 0.3.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">## colorspace   (NA -&gt; 2.0-0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">## viridisLite  (NA -&gt; 0.3.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">## RColorBrewer (NA -&gt; 1.1-2    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">## munsell      (NA -&gt; 0.5.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">## labeling     (NA -&gt; 0.4.2    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">## farver       (NA -&gt; 2.0.3    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-24" data-line-number="24">## scales       (NA -&gt; 1.1.1    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-25" data-line-number="25">## isoband      (NA -&gt; 0.2.3    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-26" data-line-number="26">## RcppEigen    (NA -&gt; 0.3.3.9.1) [CRAN]</a>
-<a class="sourceLine" id="cb1-27" data-line-number="27">## RcppParallel (NA -&gt; 5.0.2    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-28" data-line-number="28">## V8           (NA -&gt; 3.4.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-29" data-line-number="29">## loo          (NA -&gt; 2.4.1    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-30" data-line-number="30">## gridExtra    (NA -&gt; 2.3      ) [CRAN]</a>
-<a class="sourceLine" id="cb1-31" data-line-number="31">## inline       (NA -&gt; 0.3.17   ) [CRAN]</a>
-<a class="sourceLine" id="cb1-32" data-line-number="32">## ggplot2      (NA -&gt; 3.3.2    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-33" data-line-number="33">## StanHeaders  (NA -&gt; 2.21.0-7 ) [CRAN]</a>
-<a class="sourceLine" id="cb1-34" data-line-number="34">## tidyselect   (NA -&gt; 1.1.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-35" data-line-number="35">## generics     (NA -&gt; 0.1.0    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-36" data-line-number="36">## rstan        (NA -&gt; 2.21.2   ) [CRAN]</a>
-<a class="sourceLine" id="cb1-37" data-line-number="37">## rstantools   (NA -&gt; 2.1.1    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-38" data-line-number="38">## dplyr        (NA -&gt; 1.0.2    ) [CRAN]</a>
-<a class="sourceLine" id="cb1-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb1-40" data-line-number="40">## Installing 25 packages: backports, matrixStats, checkmate, gtable, colorspace, viridisLite, RColorBrewer, munsell, labeling, farver, scales, isoband, RcppEigen, RcppParallel, V8, loo, gridExtra, inline, ggplot2, StanHeaders, tidyselect, generics, rstan, rstantools, dplyr</a>
-<a class="sourceLine" id="cb1-41" data-line-number="41"></a>
-<a class="sourceLine" id="cb1-42" data-line-number="42">## Installing packages into '/Users/runner/work/_temp/Library'</a>
-<a class="sourceLine" id="cb1-43" data-line-number="43">## (as 'lib' is unspecified)</a>
-<a class="sourceLine" id="cb1-44" data-line-number="44"></a>
-<a class="sourceLine" id="cb1-45" data-line-number="45">## </a>
-<a class="sourceLine" id="cb1-46" data-line-number="46">##   There is a binary version available but the source version is later:</a>
-<a class="sourceLine" id="cb1-47" data-line-number="47">##       binary source needs_compilation</a>
-<a class="sourceLine" id="cb1-48" data-line-number="48">## rstan 2.21.1 2.21.2              TRUE</a>
-<a class="sourceLine" id="cb1-49" data-line-number="49">## </a>
-<a class="sourceLine" id="cb1-50" data-line-number="50">## </a>
-<a class="sourceLine" id="cb1-51" data-line-number="51">## The downloaded binary packages are in</a>
-<a class="sourceLine" id="cb1-52" data-line-number="52">##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpANgBfG/downloaded_packages</a>
-<a class="sourceLine" id="cb1-53" data-line-number="53"></a>
-<a class="sourceLine" id="cb1-54" data-line-number="54">## installing the source package 'rstan'</a>
-<a class="sourceLine" id="cb1-55" data-line-number="55"></a>
-<a class="sourceLine" id="cb1-56" data-line-number="56">##      checking for file ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpANgBfG/remotes691658c3edb/nschiett-fishgrowbot-86125d7/DESCRIPTION’ ...  [32m✔[39m  [90mchecking for file ‘/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpANgBfG/remotes691658c3edb/nschiett-fishgrowbot-86125d7/DESCRIPTION’[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-57" data-line-number="57">##   [90m─[39m[90m  [39m[90mpreparing ‘fishgrowbot’:[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-58" data-line-number="58">##      checking DESCRIPTION meta-information ...  [32m✔[39m  [90mchecking DESCRIPTION meta-information[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-59" data-line-number="59">##   [90m─[39m[90m  [39m[90mcleaning src[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-60" data-line-number="60">##   [90m─[39m[90m  [39m[90mchecking for LF line-endings in source and make files and shell scripts[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-61" data-line-number="61">##   [90m─[39m[90m  [39m[90mchecking for empty or unneeded directories[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-62" data-line-number="62">##      Removed empty directory ‘fishgrowbot/paper’</a>
-<a class="sourceLine" id="cb1-63" data-line-number="63">##        NB: this package now depends on R (&gt;= 3.5.0)</a>
-<a class="sourceLine" id="cb1-64" data-line-number="64">##        <span class="al">WARNING</span>: Added dependency on R &gt;= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects:  ‘fishgrowbot/data/coral_reef_fishes_data.RData’</a>
-<a class="sourceLine" id="cb1-65" data-line-number="65">## [90m─[39m[90m  [39m[90mbuilding ‘fishgrowbot_0.0.0.9000.tar.gz’[39m[36m[39m</a>
-<a class="sourceLine" id="cb1-66" data-line-number="66">##      </a>
-<a class="sourceLine" id="cb1-67" data-line-number="67">## </a>
-<a class="sourceLine" id="cb1-68" data-line-number="68"></a>
-<a class="sourceLine" id="cb1-69" data-line-number="69">## Installing package into '/Users/runner/work/_temp/Library'</a>
-<a class="sourceLine" id="cb1-70" data-line-number="70">## (as 'lib' is unspecified)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"nschiett/fishgrowbot"</span>, <span class="kw">dependencies</span><span class="kw">=</span><span class="fl">TRUE</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">fishgrowbot</span>)</pre></div>
 </div>
 </div>
-<div id="citation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h1>
+<div id="use" class="section level2">
+<h2 class="hasAnchor">
+<a href="#use" class="anchor"></a>Use</h2>
+<p>See the package documentation and introduction vignette.</p>
+</div>
+<div id="citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#citation" class="anchor"></a>Citation</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">## Warning in citation("fishgrowbot"): no date field in DESCRIPTION file of package</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">## 'fishgrowbot'</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">## </a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">## To cite package 'fishgrowbot' in publications use:</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">## </a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">##   Nina M. D. Schiettekatte (2020). fishgrowbot: Fish growth curves</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">##   through back-calculation of otoliths rings in a Bayesian framework. R</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">##   package version 0.0.0.9000.</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">## </a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">## A BibTeX entry for LaTeX users is</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">## </a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">##   @Manual{,</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">##     title = {fishgrowbot: Fish growth curves through back-calculation of otoliths rings in</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">## a Bayesian framework},</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">##     author = {Nina M. D. Schiettekatte},</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">##     year = {2020},</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18">##     note = {R package version 0.0.0.9000},</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19">##   }</a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4">## Warning in citation("fishgrowbot"): could not determine year for 'fishgrowbot'</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">## from package DESCRIPTION file</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">## </a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">## To cite package 'fishgrowbot' in publications use:</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">## </a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">##   Nina M. D. Schiettekatte (NA). fishgrowbot: Fish Growth Curves</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">##   Through Back-Calculation of Otoliths Rings in a Bayesian Framework. R</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">##   package version 0.0.0.9000.</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">## </a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">## A BibTeX entry for LaTeX users is</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">## </a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">##   @Manual{,</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">##     title = {fishgrowbot: Fish Growth Curves Through Back-Calculation of Otoliths Rings in a Bayesian Framework},</a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">##     author = {Nina M. D. Schiettekatte},</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">##     note = {R package version 0.0.0.9000},</a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">##   }</a></code></pre></div>
+</div>
 </div>
 
   </div>
