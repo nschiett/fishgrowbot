@@ -1,4 +1,4 @@
-#' A function to extract growth parameters for fishes from back-calculation data
+#' A function to extract Von Bertalanffy growth parameters for fishes from back-calculated data
 #'
 #' @author Nina M. D. Schiettekatte
 #' @param length  Numerical vector with length (CAUTION: must be in cm)
