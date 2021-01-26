@@ -2,7 +2,7 @@
 % Please edit documentation in R/growthreg.R
 \name{growthreg}
 \alias{growthreg}
-\title{A function to extract growth parameters for fishes from back-calculation data}
+\title{A function to extract Von Bertalanffy growth parameters for fishes from back-calculated data}
 \usage{
 growthreg(
   length,
@@ -39,7 +39,7 @@ growthreg(
 \item{...}{Additional arguments, see ?rstan::sampling()}
 }
 \description{
-A function to extract growth parameters for fishes from back-calculation data
+A function to extract Von Bertalanffy growth parameters for fishes from back-calculated data
 }
 \details{
 Returns a list with three elements.
