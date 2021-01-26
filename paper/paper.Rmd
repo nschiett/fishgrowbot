@@ -15,6 +15,9 @@ authors:
   - name: Jérémy Wicquart
     orcid: "0000-0003-3462-3188"
     affiliation: "1,2"
+  - name: Diego R. Barneche
+    orcid: "0000-0002-4568-2362"
+    affiliation: "3"
   - name: Valeriano Parravicini
     orcid: "0000-0002-3408-1625"
     affiliation: "1,2"
@@ -23,6 +26,8 @@ affiliations:
     index: 1
   - name: "Laboratoire d’Excellence “CORAIL”, EPHE, Perpignan, France"
     index: 2
+  - name: "Australian Institute of Marine Science: Perth, WA, AU"
+    index: 3
 bibliography: paper.bib
 date: "`r Sys.Date()`"
 output:
@@ -49,7 +54,6 @@ Fish growth can be estimated by relating fish length with the age. The most comm
 
 # Acknowledgements
 
-We acknowledge contributions from....
 We thank Jordan M. Casey for designing the logo for fishgrowbot. 
 
 # References
