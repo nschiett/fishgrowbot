@@ -1,43 +1,14 @@
----
-title: 'fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework'
-tags:
-  - R
-  - fish
-  - growth curve
-  - otolith
-  - regression
-  - Bayesian
-  - back-calculation
-authors:
-  - name: Nina M. D. Schiettekatte^[corresponding author]
-    orcid: "0000-0002-1925-3484"
-    affiliation: "1,2" # (Multiple affiliations must be quoted)
-  - name: Jérémy Wicquart
-    orcid: "0000-0003-3462-3188"
-    affiliation: "1,2"
-  - name: Valeriano Parravicini
-    orcid: "0000-0002-3408-1625"
-    affiliation: "1,2"
-affiliations:
-  - name: "PSL Université Paris: EPHE-UPVD-CNRS, USR 3278 CRIOBE, Université de Perpignan, 52 Avenue Paul Alduy, 66860, Perpignan, Cedex, France"
-    index: 1
-  - name: "Laboratoire d’Excellence “CORAIL”, EPHE, Perpignan, France"
-    index: 2
-bibliography: paper.bib
-date: "2021-01-12"
-output:
-  md_document:
-    variant: markdown_github
-    toc: true
-    toc_depth: 1
-preserve_yaml: true
----
+-   [Summary](#summary)
+-   [Background and statement of
+    need](#background-and-statement-of-need)
+-   [Acknowledgements](#acknowledgements)
+-   [References](#references)
 
 Summary
 =======
 
 Somatic growth of fishes is an essential trait driving essential
-ecosstem services such as food provision and nutrient cycling. Growth
+ecosystem services such as food provision and nutrient cycling. Growth
 rate information can be derived through age estimation based on the
 analysis of sagittal otoliths. While fitting growth models on
 size-at-age data is the most frequently used approach to derive growth
@@ -75,7 +46,7 @@ most common method for aging fish is the analysis of growth rings found
 on otoliths (i.e. calcified structures of the inner ear that grow with
 the deposition of successive calcium carbonate layers, which respond to
 circadian or seasonal rhythms) (Campana 2001). Then, fish growth
-parameters can be estimated by fitting growth curves on the size at age
+parameters can be estimated by fitting growth curves on the size-at-age
 data (Katsanevakis 2006). While there are many types of growth models,
 the Von Bertalanffy growth curve is by far the most commonly used for
 fishes. Fitting growth curves calls for a large sample size of
@@ -83,16 +54,16 @@ individuals with varying sizes. Alternatively, we can estimate
 individual growth trajectories by measuring the distances between growth
 rings, and transforming these to fish lengths, a process called
 back-calculation (Vigliola and Meekan 2009; Vigliola, Harmelin-Vivien,
-and Meekan 2000). This approach is interesting because we can fit growth
-curves with a lot less individuals and is thus less destructive.
+and Meekan 2000). This approach is interesting because it allows to fit
+growth curves by using less individuals and is thus less destructive.
 However, back-calculated lengths are rough estimates that include a
 level of uncertainty, that is not accounted for in currently described
 methods and existing tools (Vigliola and Meekan 2009). Moreover, the
 nature of back-calculated lengths demands a hierarchical modeling
-approach to account for autocorrelation within individuals. Developing
-such a model can be challenging and discouraging for the average R user,
-and there are currently no tools to aid fitting a Von Bertalanffy growth
-model to back-calculated lengths.
+approach to account for autocorrelation within individuals growth
+trajectories. Developing such a model can be challenging and
+discouraging for the average R user, and there are currently no tools to
+aid fitting a Von Bertalanffy growth model to back-calculated lengths.
 
 `fishgrowbot` greatly facilitates the application of back-calculation
 and fitting of Von Bertalanffy growth curves on back-calculated
@@ -103,7 +74,7 @@ a measure of uncertainty (Stan Development Team 2018), which to date has
 never been incorporated. Second, to our knowledge, there are no existing
 R packages that aid fitting growth models, specifically for
 back-calculated lengths. Due to the individual-level autocorrelation in
-the data, it is nescessairy to incorporate a hierarchical structure.
+the data, it is necessary to incorporate a hierarchical structure.
 Further, aside from the hierarchical structure, the Bayesian framework
 allows for the incorporation of prior biological knowledge on maximum
 lengths and growth rate parameters. Third, the back-calculation approach
@@ -111,16 +82,15 @@ can handle missing data on the otolith radius at hatching (Carpenter et
 al. 2017), a handy feature as for some individuals this parameter is
 impossible to measure. The approach is validated through application on
 a dataset of 45 coral reef fish species (Morat et al. 2020). Finally, as
-a bonus, the package provide the raw dataset of measured otoliths from
-710 individuals belonging to 45 coral reef fish species from French
+a case study, the package provide the raw dataset of measured otoliths
+from 710 individuals belonging to 45 coral reef fish species from French
 Polynesia, that can be used to run examples or to easily include in
 ecological studies.
 
 Acknowledgements
 ================
 
-We acknowledge contributions from…. We thank Jordan M. Casey for
-designing the logo for fishgrowbot.
+We thank Jordan M. Casey for designing the logo for fishgrowbot.
 
 References
 ==========
