@@ -17,7 +17,7 @@ authors:
     affiliation: "1,2"
   - name: Diego R. Barneche
     orcid: "0000-0002-4568-2362"
-    affiliation: "3"
+    affiliation: "3,4"
   - name: Valeriano Parravicini
     orcid: "0000-0002-3408-1625"
     affiliation: "1,2"
@@ -26,8 +26,10 @@ affiliations:
     index: 1
   - name: "Laboratoire d’Excellence “CORAIL”, EPHE, Perpignan, France"
     index: 2
-  - name: "Australian Institute of Marine Science: Perth, WA, AU"
+  - name: "Australian Institute of Marine Science, Indian Ocean Marine Research Centre, Crawley, WA 6009, Australia"
     index: 3
+  - name: "Oceans Institute, The University of Western Australia, Crawley, WA 6009, Australia"
+    index: 4
 bibliography: paper.bib
 date: "`r Sys.Date()`"
 output:
