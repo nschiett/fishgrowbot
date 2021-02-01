@@ -49,6 +49,12 @@ jobs:
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
+      - name: tmp dir
+        if: runner.os != 'Windows'
+        run: |
+          mkdir ~/tmp
+          export TMPDIR=~/tmp
+
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
