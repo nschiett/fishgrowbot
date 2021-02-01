@@ -10,11 +10,12 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>", 
-  fig.height = 6, 
+  comment = "#>",
+  fig.height = 6,
   fig.width = 8
 )
-rstan::rstan_options(silent = TRUE, open_progress=FALSE,show_messages=FALSE)
+rstan::rstan_options(silent = TRUE, open_progress = FALSE,
+                     show_messages = FALSE)
 ```
 In this vignette, we provide an introduction to `fishgrowbot` through a case study. For theoretical background of the methodology, see [Morat et al. (2020)](https://doi.org/10.1038/s41597-020-00711-y)         
 
@@ -25,8 +26,11 @@ library(fishgrowbot)
 library(dplyr)
 ```
 
-To introduce the functionalities of `fishgrowbot`, we look at an example for *Epinephelus merra*. 
-The function `bcalc()` returns both a dataframe with the back-calculated lengths and their uncertainty and the model object for more details on the fit of the bc stan model.   
+To introduce the functionalities of `fishgrowbot`, we look at an example for
+*Epinephelus merra*. The function `bcalc()` returns both a dataframe with the
+back-calculated lengths and their uncertainty and the model object for more
+details on the fit of the `bc` stan model.
+
 The input data should contain:
  \itemize{
    \item{id:} unique fish id per individual
@@ -39,7 +43,9 @@ The input data should contain:
 
 ```{r, bc, message = FALSE}
 # get data
-em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data, species == "Epinephelus merra", location == "Moorea")
+em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data,
+                    species == "Epinephelus merra",
+                    location == "Moorea")
 
 # back-calculation
 bc <- fishgrowbot::bcalc(data = em)
@@ -60,18 +66,20 @@ bcplot(bc$lengths, colorid = TRUE)
 bcplot(bc$lengths, colorid = TRUE, facet = TRUE, error = TRUE)
 ```
 
-Then, we can fit the hierarchical Von Bertalanffy growthmodel that allows for the estimation of multiple parameters. Importantly, length measures should be given in cm.        
+Then, we can fit the hierarchical von Bertalanffy growth model that allows for
+the estimation of multiple parameters. Importantly, length measures should be
+given in cm.
 
 ```{r, growthmodel, message = FALSE}
 # fit growth model
-growthmodel <- fishgrowbot::growthreg(length = bc$lengths$l_m/10, 
+growthmodel <- fishgrowbot::growthreg(length = bc$lengths$l_m / 10,
                                       age =  bc$lengths$age,
-                                      id =  bc$lengths$id, 
-                                      lmax = 32, 
-                                      linf_m = 28, 
-                                      linf_sd = 5, 
-                                      l0_m = 0.15, 
-                                      l0_sd = 0.015, 
+                                      id =  bc$lengths$id,
+                                      lmax = 32,
+                                      linf_m = 28,
+                                      linf_sd = 5,
+                                      l0_m = 0.15,
+                                      l0_sd = 0.015,
                                       iter = 4000,
                                       open_progress = FALSE,
                                       plot = FALSE)
@@ -80,24 +88,21 @@ growthmodel <- fishgrowbot::growthreg(length = bc$lengths$l_m/10,
 growthmodel$summary
 ```
 
-
 Now we can visualize the fit with the function `gmplot()`.
 
 ```{r, plot2a, message = FALSE}
 gmplot(growthmodel)
 ```
 
-Setting id to TRUE, we can see the individual growth curves.
+Setting `id = TRUE`, we can see the individual growth curves.
 
 ```{r, plot2b, message = FALSE}
 gmplot(growthmodel, id = TRUE)
 ```
 
-If there are many individuals, the id graph can quickly get crowded. Set facet = TRUE to have a subplot per individual. 
+If there are many individuals, the id graph can quickly get crowded. Set
+`facet = TRUE` to have a subplot per individual.
 
 ```{r, plot2c, message = FALSE}
 gmplot(growthmodel, id = TRUE, facet = TRUE)
 ```
-
-
-
