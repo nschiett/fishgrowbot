@@ -57,28 +57,16 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
-          sudo apt-get -y install devscripts
-          sudo apt-get -y install libtbb-dev
-          mkdir -p ~/.R/
-          echo "CXX14 = g++-7 -fPIC -flto=2" >> ~/.R/Makevars
-          echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars
 
-
-          
-
-      - name: Install OSX system dependencies
+      - name: V8 fix
         if: runner.os == 'macOS'
         run: |
-          brew install checkbashisms
-          brew install tbb
-          mkdir -p ~/.R/
-          echo "CXX14 = g++-7 -fPIC -flto=2" >> ~/.R/Makevars
-          echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars
+          brew install v8          
 
       - name: Install dependencies
         run: |
+          install.packages(c("remotes", "rcmdcheck", "tidyverse", "anytime"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
       - name: Check
