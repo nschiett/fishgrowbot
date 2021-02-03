@@ -49,12 +49,6 @@ jobs:
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
-      - name: tmp dir
-        if: runner.os != 'Windows'
-        run: |
-          mkdir ~/tmp
-          export TMPDIR=~/tmp
-
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
@@ -63,16 +57,17 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
-
-      - name: V8 fix
+          sudo apt-get -y install devscripts
+          sudo apt-get -y install libtbb-dev
+      - name: Install OSX system dependencies
         if: runner.os == 'macOS'
         run: |
-          brew install v8          
-
+          brew install checkbashisms
+          brew install tbb
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck", "tidyverse", "anytime"))
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
       - name: Check
@@ -87,3 +82,4 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
