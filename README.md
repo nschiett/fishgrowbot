@@ -4,10 +4,18 @@
 
 <!-- badges: start -->
 
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+![pkgdown](https://github.com/nschiett/fishgrowbot/workflows/pkgdown/badge.svg)
 [![Build
 Status](https://api.travis-ci.org/nschiett/fishualize.png?branch=master)](https://travis-ci.org/nschiett/fishgrowbot)
 [![R build
 status](https://github.com/nschiett/fishgrowbot/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishgrowbot/actions)
+[![packageversion](https://img.shields.io/badge/Package%20version-x86_64-apple-darwin17.0,%20x86_64,%20darwin17.0,%20x86_64,%20darwin17.0,%20,%204,%200.3,%202020,%2010,%2010,%2079318,%20R,%20R%20version%204.0.3%20(2020-10-10),%20Bunny-Wunnies%20Freak%20Out-orange.svg)](commits/master)
+[![Ask Us Anything
+!](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishgrowbot/issues/new)
+![Open Source
+Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 <!-- badges: end -->
 
 <img src="man/figures/fishgrowbot_logo_white.png" width = 120 alt="fishgrowbot logo"/>
@@ -64,7 +72,7 @@ Citation
     ## 
     ##   Nina M. D. Schiettekatte (2021). fishgrowbot: Fish Growth Curves
     ##   Through Back-Calculation of Otoliths Rings in a Bayesian Framework. R
-    ##   package version 0.0.0.9000.
+    ##   package version 0.0.0.9000. https://nschiett.github.io/fishgrowbot
     ## 
     ## A BibTeX entry for LaTeX users is
     ## 
@@ -74,4 +82,5 @@ Citation
     ##     author = {Nina M. D. Schiettekatte},
     ##     year = {2021},
     ##     note = {R package version 0.0.0.9000},
+    ##     url = {https://nschiett.github.io/fishgrowbot},
     ##   }
