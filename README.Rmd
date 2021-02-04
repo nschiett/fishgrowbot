@@ -73,6 +73,6 @@ devtools::install_github("nschiett/fishgrowbot", dependencies = TRUE)
 library(fishgrowbot)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning = FALSE}
 citation("fishgrowbot")
 ```
