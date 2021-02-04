@@ -1,5 +1,5 @@
 Package: fishgrowbot
-Title: Fish Growth Curves Through Back-Calculation of Otoliths Rings in a Bayesian Framework
+Title: Fish Growth Curves Through Back-Calculation of Otoliths Rings In A Bayesian Framework
 Version: 0.0.0.9
 Authors@R: 
     person(given = "Nina M. D.",
@@ -7,14 +7,16 @@ Authors@R:
            role = c("aut", "cre"),
            email = "nina.schiettekatte@gmail.com",
            comment = c(ORCID = "0000-0002-1925-3484"))
-Description: This package allows for the back-calculation of otolith readings to retrieve size at age information of fishes in a Bayesian framework. Further, it includes a growth model to fit the Von Bertalanffy growth curve to length at age data from back-calculations.
-License: GPL-2 
-Encoding: UTF-8
-LazyData: true
-Biarch: true
+Description: This package allows for the back-calculation of otolith readings to retrieve size at age information of fishes in a Bayesian framework. Further, it includes a growth model to fit the von Bertalanffy growth curve to length at age data from back-calculations.
 Depends: 
     R (>= 3.6.0)
-Imports: 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Biarch: true
+SystemRequirements: GNU make
+Imports:
     ggplot2 (>= 3.1.0),
     methods,
     dplyr,
@@ -27,12 +29,10 @@ LinkingTo:
     RcppEigen (>= 0.3.3.3.0),
     rstan (>= 2.18.1),
     StanHeaders (>= 2.18.0)
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-SystemRequirements: GNU make
 Suggests: 
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 URL: https://nschiett.github.io/fishgrowbot
 BugReports: https://github.com/nschiett/fishgrowbot/issues
+Roxygen: list(markdown = TRUE)

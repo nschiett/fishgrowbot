@@ -67,8 +67,12 @@ devtools::install_github("nschiett/fishgrowbot", dependencies = TRUE)
 library(fishgrowbot)
 ```
 
-## Use
+## Usage
 See the package documentation and introduction vignette.
+
+## Further Information
+
+`fishgrowbot` is provided under the MIT License ([MIT](http://opensource.org/licenses/MIT)).
 
 ## Citation
 
