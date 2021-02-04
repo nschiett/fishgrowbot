@@ -10,8 +10,15 @@ output:
     toc_depth: 1
 ---
 <!-- badges: start -->
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+![pkgdown](https://github.com/nschiett/fishgrowbot/workflows/pkgdown/badge.svg)
 [![Build Status](https://api.travis-ci.org/nschiett/fishualize.png?branch=master)](https://travis-ci.org/nschiett/fishgrowbot)
 [![R build status](https://github.com/nschiett/fishgrowbot/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishgrowbot/actions)
+[![packageversion](https://img.shields.io/badge/Package%20version-`r version`-orange.svg)](commits/master)
+[![Ask Us Anything
+\!](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishgrowbot/issues/new)
+![Open Source
+Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 <!-- badges: end -->          
                    
 <img src="man/figures/fishgrowbot_logo_white.png" width = 120 alt="fishgrowbot logo"/>
