@@ -7,17 +7,17 @@
 Summary
 =======
 
-Somatic growth of fishes is an essential trait driving essential
-ecosystem services such as food provision and nutrient cycling. Growth
-rate information can be derived through age estimation based on the
-analysis of sagittal otoliths. While fitting growth models on
-size-at-age data is the most frequently used approach to derive growth
-parameters, this method requires a high number of individuals. An
+Somatic growth of fishes is a fundamental trait that determines
+essential ecosystem services such as food provision and nutrient
+cycling. Growth rate information can be derived through age estimation
+based on the analysis of sagittal otoliths. While fitting growth models
+on size-at-age data is the most frequently employed approach to deriving
+growth parameters, this method requires a high number of individuals. An
 alternative approach based on back-calculation can provide
-approximations individual-level growth trajectories. We present
+approximations to individual-level growth trajectories. We present
 `fishgrowbot`, an R package that provides functions to perform the
 back-calculation in a Bayesian framework. Further, the package provides
-a Bayesian framework to fit the Von Bertalanffy growth model to the
+a Bayesian framework to fit the von Bertalanffy growth model to the
 back-calculated lengths in a hierarchical structure. Finally,
 `fishgrowbot` provides functions to visualize the results. These models
 have been verified and applied to estimate growth parameters of 45 coral
@@ -48,7 +48,7 @@ the deposition of successive calcium carbonate layers, which respond to
 circadian or seasonal rhythms) (Campana 2001). Then, fish growth
 parameters can be estimated by fitting growth curves on the size-at-age
 data (Katsanevakis 2006). While there are many types of growth models,
-the Von Bertalanffy growth curve is by far the most commonly used for
+the von Bertalanffy growth curve is by far the most commonly used for
 fishes. Fitting growth curves calls for a large sample size of
 individuals with varying sizes. Alternatively, we can estimate
 individual growth trajectories by measuring the distances between growth
@@ -63,16 +63,16 @@ nature of back-calculated lengths demands a hierarchical modeling
 approach to account for autocorrelation within individuals growth
 trajectories. Developing such a model can be challenging and
 discouraging for the average R user, and there are currently no tools to
-aid fitting a Von Bertalanffy growth model to back-calculated lengths.
+aid fitting a von Bertalanffy growth model to back-calculated lengths.
 
 `fishgrowbot` greatly facilitates the application of back-calculation
-and fitting of Von Bertalanffy growth curves on back-calculated
+and fitting of von Bertalanffy growth curves on back-calculated
 size-at-age data. Even though there are R packages for back-calculation
 and fitting growth models, `fishgowbot` brings a number of new features
 to the table. First, back-calculation in a Bayesian framework allows for
 a measure of uncertainty (Stan Development Team 2018), which to date has
-never been incorporated. Second, to our knowledge, there are no existing
-R packages that aid fitting growth models, specifically for
+never been incorporated. Second, to the best of our knowledge, there are
+no existing R packages that aid fitting growth models, specifically for
 back-calculated lengths. Due to the individual-level autocorrelation in
 the data, it is necessary to incorporate a hierarchical structure.
 Further, aside from the hierarchical structure, the Bayesian framework
