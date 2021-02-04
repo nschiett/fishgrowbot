@@ -53,10 +53,16 @@ install it from GitHub.
     devtools::install_github("nschiett/fishgrowbot", dependencies = TRUE)
     library(fishgrowbot)
 
-Use
----
+Usage
+-----
 
 See the package documentation and introduction vignette.
+
+Further Information
+-------------------
+
+`fishgrowbot` is provided under the MIT License
+([MIT](http://opensource.org/licenses/MIT)).
 
 Citation
 --------
@@ -65,14 +71,14 @@ Citation
     #> To cite package 'fishgrowbot' in publications use:
     #> 
     #>   Nina M. D. Schiettekatte (2021). fishgrowbot: Fish Growth Curves Through
-    #>   Back-Calculation of Otoliths Rings in a Bayesian Framework. R package version
+    #>   Back-Calculation of Otoliths Rings In A Bayesian Framework. R package version
     #>   0.0.0.9. https://nschiett.github.io/fishgrowbot
     #> 
     #> A BibTeX entry for LaTeX users is
     #> 
     #>   @Manual{,
-    #>     title = {fishgrowbot: Fish Growth Curves Through Back-Calculation of Otoliths Rings in
-    #> a Bayesian Framework},
+    #>     title = {fishgrowbot: Fish Growth Curves Through Back-Calculation of Otoliths Rings In
+    #> A Bayesian Framework},
     #>     author = {Nina M. D. Schiettekatte},
     #>     year = {2021},
     #>     note = {R package version 0.0.0.9},
