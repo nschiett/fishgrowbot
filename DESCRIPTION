@@ -33,3 +33,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://nschiett.github.io/fishgrowbot
+BugReports: https://github.com/nschiett/fishgrowbot/issues
