@@ -2,4 +2,12 @@
 ^\.Rproj\.user$
 ^doc$
 ^Meta$
-^\configure*
+^configure*
+^\.github$
+^\.*Rcheck$
+^paper$
+^docs$
+^docs$
+^README.Rmd
+^README_files$
+^\.travis.yml
