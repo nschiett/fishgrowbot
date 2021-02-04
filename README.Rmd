@@ -1,14 +1,19 @@
 ---
-title: "fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework"
-author:
-  - "Nina Schiettekatte"
-date: "`r Sys.Date()`"
-output:
-  md_document:
-    variant: markdown_github
-    toc: true
-    toc_depth: 1
+output: github_document
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+stopifnot(require(knitr))
+options(width = 90)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/",
+  out.width = "100%"
+)
+```
 
 ```{r, echo = FALSE}
 version <- as.vector(read.dcf("DESCRIPTION")[, "Version"])
