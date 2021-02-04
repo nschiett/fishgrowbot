@@ -12,7 +12,7 @@ Fish growth curves through back-calculation of otoliths rings in a Bayesian fram
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 ![pkgdown](https://github.com/nschiett/fishgrowbot/workflows/pkgdown/badge.svg)
 [![Build
-Status](https://api.travis-ci.org/nschiett/fishualize.png?branch=master)](https://travis-ci.org/nschiett/fishgrowbot)
+Status](https://api.travis-ci.org/nschiett/fishualize.png?branch=master)](https://travis-ci.com/nschiett/fishgrowbot)
 [![R build
 status](https://github.com/nschiett/fishgrowbot/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishgrowbot/actions)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9-orange.svg)](commits/master)
