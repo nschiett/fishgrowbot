@@ -1,6 +1,11 @@
--   [fishgrowbot: Fish growth curves through back-calculation of
-    otoliths rings in a Bayesian
-    framework](#fishgrowbot-fish-growth-curves-through-back-calculation-of-otoliths-rings-in-a-bayesian-framework)
+-   [fishgrowbot
+    <img src="man/figures/fishgrowbot_logo_white.png" width = 120 alt="fishgrowbot logo" align = "right" />](#fishgrowbot)
+
+fishgrowbot <img src="man/figures/fishgrowbot_logo_white.png" width = 120 alt="fishgrowbot logo" align = "right" />
+===================================================================================================================
+
+Fish growth curves through back-calculation of otoliths rings in a Bayesian framework
+-------------------------------------------------------------------------------------
 
 <!-- badges: start -->
 
@@ -11,17 +16,12 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 Status](https://api.travis-ci.org/nschiett/fishualize.png?branch=master)](https://travis-ci.org/nschiett/fishgrowbot)
 [![R build
 status](https://github.com/nschiett/fishgrowbot/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishgrowbot/actions)
-[![packageversion](https://img.shields.io/badge/Package%20version-x86_64-apple-darwin17.0,%20x86_64,%20darwin17.0,%20x86_64,%20darwin17.0,%20,%204,%200.3,%202020,%2010,%2010,%2079318,%20R,%20R%20version%204.0.3%20(2020-10-10),%20Bunny-Wunnies%20Freak%20Out-orange.svg)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg)](commits/master)
 [![Ask Us Anything
 !](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishgrowbot/issues/new)
 ![Open Source
 Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 <!-- badges: end -->
-
-<img src="man/figures/fishgrowbot_logo_white.png" width = 120 alt="fishgrowbot logo"/>
-
-fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework
-==================================================================================================
 
 The `fishgrowbot` package provides a tool to conduct back-calculation
 based on otolith readings and fit the von Bertalanffy growth curve with
@@ -63,9 +63,6 @@ See the package documentation and introduction vignette.
 
 Citation
 --------
-
-    ## Warning in citation("fishgrowbot"): no date field in DESCRIPTION file of package
-    ## 'fishgrowbot'
 
     ## 
     ## To cite package 'fishgrowbot' in publications use:
