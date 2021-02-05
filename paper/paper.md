@@ -1,8 +1,44 @@
--   [Summary](#summary)
--   [Background and statement of
-    need](#background-and-statement-of-need)
--   [Acknowledgements](#acknowledgements)
--   [References](#references)
+---
+title: 'fishgrowbot: Fish growth curves through back-calculation of otoliths rings in a Bayesian framework'
+tags:
+  - R
+  - fish
+  - growth curve
+  - otolith
+  - regression
+  - Bayesian
+  - back-calculation
+authors:
+  - name: Nina M. D. Schiettekatte^[corresponding author]
+    orcid: "0000-0002-1925-3484"
+    affiliation: "1,2" # (Multiple affiliations must be quoted)
+  - name: Jérémy Wicquart
+    orcid: "0000-0003-3462-3188"
+    affiliation: "1,2"
+  - name: Diego R. Barneche
+    orcid: "0000-0002-4568-2362"
+    affiliation: "3,4"
+  - name: Valeriano Parravicini
+    orcid: "0000-0002-3408-1625"
+    affiliation: "1,2"
+affiliations:
+  - name: "PSL Université Paris: EPHE-UPVD-CNRS, USR 3278 CRIOBE, Université de Perpignan, 52 Avenue Paul Alduy, 66860, Perpignan, Cedex, France"
+    index: 1
+  - name: "Laboratoire d’Excellence “CORAIL”, EPHE, Perpignan, France"
+    index: 2
+  - name: "Australian Institute of Marine Science, Indian Ocean Marine Research Centre, Crawley, WA 6009, Australia"
+    index: 3
+  - name: "Oceans Institute, The University of Western Australia, Crawley, WA 6009, Australia"
+    index: 4
+bibliography: paper.bib
+date: "2021-02-05"
+output:
+  md_document:
+    variant: markdown_github
+    toc: true
+    toc_depth: 1
+preserve_yaml: true
+---
 
 Summary
 =======
@@ -99,32 +135,30 @@ Brandl, Simon J, Douglas B Rasher, Isabelle M Côté, Jordan M Casey,
 Emily S Darling, Jonathan S Lefcheck, and J Emmett Duffy. 2019. “Coral
 reef ecosystem functioning: eight core processes and the role of
 biodiversity.” *Frontiers in Ecology and the Environment, Advance Online
-Publication.* 17 (8). John Wiley & Sons, Ltd:445–54.
-<https://doi.org/10.1002/fee.2088>.
+Publication.* 17 (8): 445–54. <https://doi.org/10.1002/fee.2088>.
 
 Campana, S. E. 2001. “Accuracy, precision and quality control in age
 determination, including a review of the use and abuse of age validation
-methods.” *Journal of Fish Biology* 59:197–242.
+methods.” *Journal of Fish Biology* 59: 197–242.
 <https://doi.org/10.1111/j.1095-8649.2001.tb00127.x>.
 
 Carpenter, Bob, Andrew Gelman, Matthew D. Hoffman, Daniel Lee, Ben
 Goodrich, Michael Betancourt, Marcus Brubaker, Jiqiang Guo, Peter Li,
 and Allen Riddell. 2017. “Stan : A Probabilistic Programming Language.”
-*Journal of Statistical Software* 76 (1):1–31.
+*Journal of Statistical Software* 76 (1): 1–31.
 <https://doi.org/10.18637/jss.v076.i01>.
 
 Jackson, J B, M X Kirby, W H Berger, K A Bjorndal, L W Botsford, B J
 Bourque, R H Bradbury, et al. 2001. “Historical overfishing and the
 recent collapse of coastal ecosystems.” *Science (New York, N.Y.)* 293
-(5530). American Association for the Advancement of Science:629–37.
-<https://doi.org/10.1126/science.1059199>.
+(5530): 629–37. <https://doi.org/10.1126/science.1059199>.
 
 Katsanevakis, Stelios. 2006. “Modelling fish growth: Model selection,
 multi-model inference and model selection uncertainty.” *Fisheries
-Research* 81 (2-3). Elsevier:229–35.
+Research* 81 (2-3): 229–35.
 <https://doi.org/10.1016/j.fishres.2006.07.002>.
 
-Morat, Fabien, Jérémy Wicquart, Nina M.D. Schiettekatte, Guillemette de
+Morat, Fabien, Jérémy Wicquart, Nina M. D. Schiettekatte, Guillemette de
 Sinéty, Jean Bienvenu, Jordan M. Casey, Simon J. Brandl, et al. 2020.
 “Individual back-calculated size-at-age based on otoliths from Pacific
 coral reef fish species.” *Scientific Data* 7 (370).
@@ -134,7 +168,7 @@ Schiettekatte, Nina M D, Diego R Barneche, Sébastien Villéger, Jacob E
 Allgeier, Deron E Burkepile, Simon J Brandl, Jordan M Casey, et al.
 2020. “Nutrient limitation, bioenergetics, and stoichiometry: a new
 model to predict elemental fluxes mediated by fishes.” *Functional
-Ecology* 34 (9):1857–69. <https://doi.org/10.1111/1365-2435.13618>.
+Ecology* 34 (9): 1857–69. <https://doi.org/10.1111/1365-2435.13618>.
 
 Stan Development Team. 2018. “RStan: the R interface to Stan. R package
 version 2.17.3.” <https://doi.org/10.3168/jds.S0022-0302(63)89186-9>.
@@ -143,8 +177,7 @@ Vigliola, Laurent, Mireille Harmelin-Vivien, and Mark G. Meekan. 2000.
 “Comparison of techniques of back-calculation of growth and settlement
 marks from the otoliths of three species of &lt;i&gt;Diplodus&lt;/i&gt;
 from the Mediterranean Sea.” *Canadian Journal of Fisheries and Aquatic
-Sciences* 57 (6). Canadian Science Publishing:1291–9.
-<https://doi.org/10.1139/cjfas-57-6-1291>.
+Sciences* 57 (6): 1291–9. <https://doi.org/10.1139/cjfas-57-6-1291>.
 
 Vigliola, Laurent, and Mark G. Meekan. 2009. “The Back-Calculation of
 Fish Growth From Otoliths.” In *Tropical Fish Otoliths: Information for

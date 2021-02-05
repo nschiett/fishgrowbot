@@ -2,7 +2,8 @@
 % Please edit documentation in R/growthreg.R
 \name{growthreg}
 \alias{growthreg}
-\title{A function to extract Von Bertalanffy growth parameters for fishes from back-calculated data}
+\title{A function to extract von Bertalanffy growth parameters for fishes from
+back-calculated data}
 \usage{
 growthreg(
   length,
@@ -18,48 +19,63 @@ growthreg(
 )
 }
 \arguments{
-\item{length}{Numerical vector with length (CAUTION: must be in cm)}
+\item{length}{\code{\link[base]{numeric}} vector with length
+(CAUTION: must be in cm).}
 
-\item{age}{Numerical vector with age}
+\item{age}{\code{\link[base]{numeric}} vector with age.}
 
-\item{id}{Character vector with fish id}
+\item{id}{\code{\link[base]{character}} vector with fish ID.}
 
-\item{lmax}{maximum size. Based on this value, maximum growth rate kmax will be computed.}
+\item{lmax}{Maximum size. Based on this value, maximum growth rate kmax
+will be computed.}
 
-\item{linf_m}{Prior for linf}
+\item{linf_m}{Prior for parameter linf.}
 
-\item{linf_sd}{Prior sd for linf (default set to 10\% of linf_m)}
+\item{linf_sd}{Prior sd for linf (default set to 10\% of linf_m).}
 
-\item{l0_m}{Prior for l0}
+\item{l0_m}{Prior for l0.}
 
-\item{l0_sd}{Prior sd for l0 (default set to 10\% of l0_m)}
+\item{l0_sd}{Prior sd for l0 (default set to 10\% of l0_m).}
 
-\item{plot}{option to plot model fit (TRUE or FALSE)}
+\item{plot}{\code{\link[base]{logical}} Option to plot model fit. Defaults
+to TRUE.}
 
-\item{...}{Additional arguments, see ?rstan::sampling()}
+\item{...}{Additional arguments to \code{\link[rstan]{sampling}}.}
 }
 \description{
-A function to extract Von Bertalanffy growth parameters for fishes from back-calculated data
+A function to extract von Bertalanffy growth parameters for fishes from
+back-calculated data
 }
 \details{
 Returns a list with three elements.
-First element is a dataframe with estimates for linf, k and t0, sl and gp.
-There is a hierarchical structure for linf and k, so that there is a unique estimate for these parameters per individual (linf_j, k_j).
-linf and k are the population level estimates of linf and k. kmax is the standardised growth parameter, depending on lmax
-(kmax = exp(sl * log(lmax) + gp), see Morais and Bellwood (2018) for details)
-Second element is a dataframe with model fits for the average regression across individuals (ypred_m, ypred_sd, ypred_lb, ypred_ub),
-and the fitted regression er individual (yrep_m, yrep_sd, yrep_lb, yrep_ub)
+The first element is a \code{\link[base]{data.frame}} with estimates for
+\code{linf}, \code{k} and \code{t0}, \code{sl} and \code{gp}.
+There is a hierarchical structure for \code{linf} and \code{k}, so that
+there is a unique estimate for these parameters per individual
+(\code{linf_j}, \code{k_j}).
+\code{linf} and \code{k} are the population level estimates of \code{linf}
+and \code{k}. \code{kmax} is the standardised growth parameter, depending
+on \code{lmax} (kmax = exp(sl * log(lmax) + gp), see Morais and Bellwood
+(2018) for details.
+The second element is a \code{\link[base]{data.frame}} with model fits for
+the average regression across individuals (\code{ypred_m}, \code{ypred_sd},
+\code{ypred_lb}, \code{ypred_ub}), and the fitted regression er individual
+(\code{yrep_m}, \code{yrep_sd}, \code{yrep_lb}, \code{yrep_ub}).
 The third element is the entire stanfit object.
 }
 \examples{
 
 \dontrun{
-em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data,
-species == "Epinephelus merra", location == "Moorea")
-bc <- fishgrowbot::bcalc(data = em)$lengths
-fishgrowbot::growthreg(length = bc$l_m/10, age = bc$age,
-id = bc$id, lmax = 32, linf_m = 28, linf_sd = 5, l0_m = 0.15, l0_sd = 0.015,
-iter = 4000, chains = 1)
+library(dplyr)
+library(fishgrowbot)
+data(coral_reef_fishes_data)
+em <- filter(coral_reef_fishes_data,
+             species == "Epinephelus merra",
+             location == "Moorea")
+bc <- bcalc(data = em)$lengths
+growthreg(length = bc$l_m/10, age = bc$age, id = bc$id, lmax = 32,
+          linf_m = 28, linf_sd = 5, l0_m = 0.15, l0_sd = 0.015,
+          iter = 4000, chains = 1)
 }
 }
 \author{

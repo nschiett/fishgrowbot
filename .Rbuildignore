@@ -13,3 +13,4 @@
 ^\.travis.yml
 ^_pkgdown\.yml$
 ^pkgdown$
+^LICENSE\.md$

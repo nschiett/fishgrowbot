@@ -21,6 +21,7 @@ In this vignette, we provide an introduction to `fishgrowbot` through a case stu
 
 
 First things first: we need to load some packages. 
+
 ```{r setup}
 library(fishgrowbot)
 library(dplyr)
@@ -32,23 +33,19 @@ back-calculated lengths and their uncertainty and the model object for more
 details on the fit of the `bc` stan model.
 
 The input data should contain:
- \itemize{
-   \item{id:} unique fish id per individual
-   \item{radi:} measurements of otolith growth rings (in mm)
-   \item{agei:} age estimation of fish
-   \item{lencap:} length at capture (in mm)
-   \item{radcap:} radius of otolith at capture (in mm)
-   \item{l0p:} length of fish at hatching (in mm)
- }
+  + id: Unique fish id per individual.  
+  + radi: Measurements of otolith growth rings (in mm).  
+  + agei: Age estimation of fish.  
+  + lencap: Length at capture (in mm).  
+  + radcap: Radius of otolith at capture (in mm).  
+  + l0p: Length of fish at hatching (in mm).  
 
 ```{r, bc, message = FALSE}
 # get data
-em <- dplyr::filter(fishgrowbot::coral_reef_fishes_data,
-                    species == "Epinephelus merra",
-                    location == "Moorea")
-
+em <- filter(coral_reef_fishes_data, species == "Epinephelus merra",
+             location == "Moorea")
 # back-calculation
-bc <- fishgrowbot::bcalc(data = em)
+bc <- bcalc(data = em)
 head(bc$lengths)
 ```
 
@@ -72,18 +69,10 @@ given in cm.
 
 ```{r, growthmodel, message = FALSE}
 # fit growth model
-growthmodel <- fishgrowbot::growthreg(length = bc$lengths$l_m / 10,
-                                      age =  bc$lengths$age,
-                                      id =  bc$lengths$id,
-                                      lmax = 32,
-                                      linf_m = 28,
-                                      linf_sd = 5,
-                                      l0_m = 0.15,
-                                      l0_sd = 0.015,
-                                      iter = 4000,
-                                      open_progress = FALSE,
-                                      plot = FALSE)
-
+growthmodel <- growthreg(length = bc$lengths$l_m / 10, age =  bc$lengths$age,
+                         id =  bc$lengths$id, lmax = 32, linf_m = 28,
+                         linf_sd = 5, l0_m = 0.15, l0_sd = 0.015, iter = 4000,
+                         open_progress = FALSE, plot = FALSE)
 # summary growth parameters
 growthmodel$summary
 ```

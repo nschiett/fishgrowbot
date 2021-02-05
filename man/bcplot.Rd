@@ -7,18 +7,24 @@
 bcplot(bcdata, colorid = FALSE, facet = FALSE, legend = FALSE, error = FALSE)
 }
 \arguments{
-\item{bcdata}{Results from back-calculation (output of function bcalc())}
+\item{bcdata}{Results from back-calculation
+(output of function \code{\link{bcalc}}).}
 
-\item{colorid}{Option to specify colors by fish id (default = FALSE)}
+\item{colorid}{\code{\link[base]{logical}}. Option to specify colors by
+fish ID. Defaults to FALSE.}
 
-\item{facet}{Option to split graph in facets per fish id (default = FALSE)}
+\item{facet}{\code{\link[base]{logical}}. Option to split graph in
+facets per fish ID. Defaults to FALSE.}
 
-\item{legend}{Option to add color legend (defaul = FALSE)}
+\item{legend}{\code{\link[base]{logical}}. Option to add color legend.
+Defaults to FALSE.}
 
-\item{error}{Option to show 95\%CI around bc estimates (default = FALSE)}
+\item{error}{\code{\link[base]{logical}}. Option to show 95\% CI around
+bc estimates. Defaults to FALSE.}
 }
 \value{
-A plot showing back-calculated lengths
+A plot of class \code{\link[ggplot2]{ggplot}} showing
+back-calculated lengths.
 }
 \description{
 Function to plot results of back-calculation

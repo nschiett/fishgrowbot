@@ -7,18 +7,22 @@
 gmplot(gmdata, id = FALSE, facet = FALSE, legend = FALSE, error = TRUE)
 }
 \arguments{
-\item{gmdata}{output of function growthreg()}
+\item{gmdata}{output of function \code{\link{growthreg}}.}
 
-\item{id}{Show growth curves per individual (default = FALSE)}
+\item{id}{\code{\link[base]{logical}}. Show growth curves per individual.
+Defaults to FALSE.}
 
-\item{facet}{Option to split graph in facets per fish id (default = FALSE)}
+\item{facet}{\code{\link[base]{logical}}. Option to split graph in facets
+per fish id . Defaults to FALSE.}
 
-\item{legend}{Option to add color legend (defaul = FALSE)}
+\item{legend}{\code{\link[base]{logical}}. Option to add color legend.
+Defaults to FALSE.}
 
-\item{error}{Option to show 95\%CI around bc estimates (default = FALSE)}
+\item{error}{\code{\link[base]{logical}}. Option to show 95\% CI around bc
+estimates. Defaults to TRUE.}
 }
 \value{
-A plot
+A plot of class \code{\link[ggplot2]{ggplot}}.
 }
 \description{
 Function to visualize the fitted hierarchical growth model
