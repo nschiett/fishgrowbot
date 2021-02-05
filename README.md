@@ -10,11 +10,12 @@ Fish growth curves through back-calculation of otoliths rings in a Bayesian fram
 
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-![pkgdown](https://github.com/nschiett/fishgrowbot/workflows/pkgdown/badge.svg)
-[![Build
-Status](https://api.travis-ci.com/nschiett/fishgrowbot.svg?branch=master)](https://travis-ci.com/nschiett/fishgrowbot)
 [![R build
 status](https://github.com/nschiett/fishgrowbot/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishgrowbot/actions)
+![pkgdown](https://github.com/nschiett/fishgrowbot/workflows/pkgdown/badge.svg)
+[![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
+[![Build
+Status](https://api.travis-ci.com/nschiett/fishgrowbot.svg?branch=master)](https://travis-ci.com/nschiett/fishgrowbot)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9-orange.svg)](commits/master)
 [![Ask Us Anything
 !](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishgrowbot/issues/new)
@@ -67,20 +68,18 @@ Further Information
 Citation
 --------
 
-    #> 
-    #> To cite package 'fishgrowbot' in publications use:
-    #> 
-    #>   Nina M. D. Schiettekatte (2021). fishgrowbot: Fish Growth Curves Through
-    #>   Back-Calculation of Otoliths Rings In A Bayesian Framework. R package version
-    #>   0.0.0.9. https://nschiett.github.io/fishgrowbot
-    #> 
-    #> A BibTeX entry for LaTeX users is
-    #> 
-    #>   @Manual{,
-    #>     title = {fishgrowbot: Fish Growth Curves Through Back-Calculation of Otoliths Rings In
-    #> A Bayesian Framework},
-    #>     author = {Nina M. D. Schiettekatte},
-    #>     year = {2021},
-    #>     note = {R package version 0.0.0.9},
-    #>     url = {https://nschiett.github.io/fishgrowbot},
-    #>   }
+    To cite package 'fishgrowbot' in publications use:
+
+      Nina M. D. Schiettekatte (2021). fishgrowbot: Fish Growth Curves Through
+      Back-Calculation of Otoliths Rings in a Bayesian Framework. R package version
+      0.0.0.9. https://nschiett.github.io/fishgrowbot
+
+    A BibTeX entry for LaTeX users is
+
+      @Manual{,
+        title = {fishgrowbot: Fish Growth Curves Through Back-Calculation of Otoliths Rings in a Bayesian Framework},
+        author = {Nina M. D. Schiettekatte},
+        year = {2021},
+        note = {R package version 0.0.0.9},
+        url = {https://nschiett.github.io/fishgrowbot},
+      }
