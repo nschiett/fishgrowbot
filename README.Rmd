@@ -77,12 +77,6 @@ See the package documentation and introduction vignette.
 
 ## Citation
 
-```{r, echo = FALSE, results = "hide", message = FALSE, warning = FALSE}
-install.packages("devtools")
-devtools::install_github("nschiett/fishgrowbot", dependencies = TRUE)
-library(fishgrowbot)
-```
-
 ```
 To cite package 'fishgrowbot' in publications use:
 
