@@ -30,13 +30,14 @@ affiliations:
     index: 3
   - name: "Oceans Institute, The University of Western Australia, Crawley, WA 6009, Australia"
     index: 4
+citation_author: Schiettekatte et al.
 bibliography: paper.bib
 date: "`r Sys.Date()`"
 output:
-  md_document:
-    variant: markdown_github
-    toc: true
-    toc_depth: 1
+  my_modified_joss:
+    fig_caption: yes
+csl: apa.csl
+journal: JOSS
 preserve_yaml: true
 ---
 
