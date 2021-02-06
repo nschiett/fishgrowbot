@@ -17,7 +17,13 @@ knitr::opts_chunk$set(
 rstan::rstan_options(silent = TRUE, open_progress = FALSE,
                      show_messages = FALSE)
 ```
-In this vignette, we provide an introduction to `fishgrowbot` through a case study. For theoretical background of the methodology, see [Morat et al. (2020)](https://doi.org/10.1038/s41597-020-00711-y)         
+Somatic growth of fishes is a fundamental trait that determines essential ecosystem services such as food provision and nutrient cycling. 
+Growth rate information can be derived through age estimation based on the analysis of sagittal otoliths. While fitting growth models on size-at-age data is the most frequently employed approach to deriving growth parameters, this method requires a high number of individuals. 
+An alternative approach based on back-calculation can provide approximations to individual-level growth trajectories. 
+`fishgrowbot` provides functions to perform the back-calculation in a Bayesian framework. 
+Further, the package provides a Bayesian framework to fit the von Bertalanffy growth model to the back-calculated lengths in a hierarchical structure. 
+Finally, `fishgrowbot` provides functions to visualize the results. 
+In this vignette, we provide an introduction to `fishgrowbot` through a case study. For more theoretical background of the methodology, see [Morat et al. (2020)](https://doi.org/10.1038/s41597-020-00711-y)         
 
 
 First things first: we need to load some packages. 
@@ -32,7 +38,7 @@ To introduce the functionalities of `fishgrowbot`, we look at an example for
 back-calculated lengths and their uncertainty and the model object for more
 details on the fit of the `bc` stan model.
 
-The input data should contain:
+The input data should contain:         
   + id: Unique fish id per individual.  
   + radi: Measurements of otolith growth rings (in mm).  
   + agei: Age estimation of fish.  

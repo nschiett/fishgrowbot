@@ -41,6 +41,31 @@ journal: JOSS
 preserve_yaml: true
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.height = 6,
+  fig.width = 8
+)
+rstan::rstan_options(silent = TRUE, open_progress = FALSE,
+                     show_messages = FALSE)
+
+library(fishgrowbot)
+library(dplyr)
+# get data
+em <- filter(coral_reef_fishes_data, species == "Epinephelus merra",
+             location == "Moorea")
+# back-calculation
+bc <- bcalc(data = em)
+
+growthmodel <- growthreg(length = bc$lengths$l_m / 10, age =  bc$lengths$age,
+                         id =  bc$lengths$id, lmax = 32, linf_m = 28,
+                         linf_sd = 5, l0_m = 0.15, l0_sd = 0.015, iter = 4000,
+                         open_progress = FALSE, plot = FALSE)
+
+```
+
 # Summary
 
 Somatic growth of fishes is a fundamental trait that determines essential ecosystem services such as food provision and nutrient cycling. Growth rate information can be derived through age estimation based on the analysis of sagittal otoliths. While fitting growth models on size-at-age data is the most frequently employed approach to deriving growth parameters, this method requires a high number of individuals. An alternative approach based on back-calculation can provide approximations to individual-level growth trajectories. We present `fishgrowbot`, an R package that provides functions to perform the back-calculation in a Bayesian framework. Further, the package provides a Bayesian framework to fit the von Bertalanffy growth model to the back-calculated lengths in a hierarchical structure. Finally, `fishgrowbot` provides functions to visualize the results. These models have been verified and applied to estimate growth parameters of 45 coral reef species [@Morat2020]. `fishgrowbot` will greatly help researchers to estimate growth parameters, even when a limited amount of otoliths are available. 
@@ -49,10 +74,67 @@ Somatic growth of fishes is a fundamental trait that determines essential ecosys
 # Background and statement of need
 
 Somatic growth of fishes is a critical trait to estimate biological processes that range from individuals to communities [@Brandl2019front]. In the context of fisheries, parameters describing fish growth can be used directly to estimate an important ecosystem service, i.e. food production. Further, somatic growth rate is an important part of an individual's energy budget and thus underlies bioenergetic models that estimate fluxes of energy and elements mediated by fishes [@Schiettekatte2020]. Many ecosystems are under major anthropogenic pressure, and fish populations are in decline across the globe [@Jackson2001a]. As billions of people depend on fishes for food security and fishes can play an important role in nutrient cycling, it is critical to increase our ability to estimate growth parameters.
-
+            
 Fish growth can be estimated by relating fish length with the age. The most common method for aging fish is the analysis of growth rings found on otoliths (i.e. calcified structures of the inner ear that grow with the deposition of successive calcium carbonate layers, which respond to circadian or seasonal rhythms) [@Campana2001]. Then, fish growth parameters can be estimated by fitting growth curves on the size-at-age data [@Katsanevakis2006]. While there are many types of growth models, the von Bertalanffy growth curve is by far the most commonly used for fishes. Fitting growth curves calls for a large sample size of individuals with varying sizes. Alternatively, we can estimate individual growth trajectories by measuring the distances between growth rings, and transforming these to fish lengths, a process called back-calculation [@Vigliola2009; @Vigliola2000]. This approach is interesting because it allows to fit growth curves by using less individuals and is thus less destructive. However, back-calculated lengths are rough estimates that include a level of uncertainty, that is not accounted for in currently described methods and existing tools [@Vigliola2009]. Moreover, the nature of back-calculated lengths demands a hierarchical modeling approach to account for autocorrelation within individuals growth trajectories. Developing such a model can be challenging and discouraging for the average R user, and there are currently no tools to aid fitting a von Bertalanffy growth model to back-calculated lengths.
+               
+`fishgrowbot` greatly facilitates the application of back-calculation and fitting of von Bertalanffy growth curves on back-calculated size-at-age data. Even though there are R packages for back-calculation and fitting growth models, `fishgowbot` brings a number of new features to the table. First, back-calculation in a Bayesian framework allows for a measure of uncertainty [@Stan2018], which to date has never been incorporated. Second, to the best of our knowledge, there are no existing R packages that aid fitting growth models, specifically for back-calculated lengths. Due to the individual-level autocorrelation in the data, it is necessary to incorporate a hierarchical structure. Further, aside from the hierarchical structure, the Bayesian framework allows for the incorporation of prior biological knowledge on maximum lengths and growth rate parameters. Third, the back-calculation approach can handle missing data on the otolith radius at hatching [@Carpenter2017], a handy feature as for some individuals this parameter is impossible to measure. The approach is validated through application on a dataset of 45 coral reef fish species [@Morat2020]. Finally, as a case study, the package provide the raw dataset of measured otoliths from 710 individuals belonging to 45 coral reef fish species from French Polynesia, that can be used to run examples or to easily include in ecological studies.    
 
-`fishgrowbot` greatly facilitates the application of back-calculation and fitting of von Bertalanffy growth curves on back-calculated size-at-age data. Even though there are R packages for back-calculation and fitting growth models, `fishgowbot` brings a number of new features to the table. First, back-calculation in a Bayesian framework allows for a measure of uncertainty [@Stan2018], which to date has never been incorporated. Second, to the best of our knowledge, there are no existing R packages that aid fitting growth models, specifically for back-calculated lengths. Due to the individual-level autocorrelation in the data, it is necessary to incorporate a hierarchical structure. Further, aside from the hierarchical structure, the Bayesian framework allows for the incorporation of prior biological knowledge on maximum lengths and growth rate parameters. Third, the back-calculation approach can handle missing data on the otolith radius at hatching [@Carpenter2017], a handy feature as for some individuals this parameter is impossible to measure. The approach is validated through application on a dataset of 45 coral reef fish species [@Morat2020]. Finally, as a case study, the package provide the raw dataset of measured otoliths from 710 individuals belonging to 45 coral reef fish species from French Polynesia, that can be used to run examples or to easily include in ecological studies. 
+# Use
+To introduce the functionalities of `fishgrowbot`, we look at an example for
+*Epinephelus merra*. The function `bcalc()` returns both a dataframe with the
+back-calculated lengths and their uncertainty and the model object for more
+details on the fit of the `bc` stan model.
+
+The input data should contain:         
+  + id: Unique fish id per individual.  
+  + radi: Measurements of otolith growth rings (in mm).  
+  + agei: Age estimation of fish.  
+  + lencap: Length at capture (in mm).  
+  + radcap: Radius of otolith at capture (in mm).  
+  + l0p: Length of fish at hatching (in mm).  
+
+```
+# get data
+em <- filter(coral_reef_fishes_data, species == "Epinephelus merra",
+             location == "Moorea")
+# back-calculation
+bc <- bcalc(data = em)
+```
+```{r}
+head(bc$lengths)
+```
+
+The function `bcplot` helps visualize the back calculation. Setting error to TRUE adds the 95% credible intervals of the length estimates.     
+
+```{r, plot1a, message = FALSE}
+bcplot(bc$lengths, error = FALSE)
+```
+
+Then, we can fit the hierarchical von Bertalanffy growth model that allows for
+the estimation of multiple parameters. Importantly, length measures should be
+given in cm. Priors for Linf (i.e. asymptotic length) and l0 (length at hatching) s
+hould be specified by the user.     
+
+```
+# fit growth model
+growthmodel <- growthreg(length = bc$lengths$l_m / 10, age =  bc$lengths$age,
+                         id =  bc$lengths$id, lmax = 32, linf_m = 28,
+                         linf_sd = 5, l0_m = 0.15, l0_sd = 0.015, iter = 4000,
+                         open_progress = FALSE, plot = FALSE)
+```
+```{r}
+# summary growth parameters
+growthmodel$summary
+```
+
+Now we can visualize the fit with the function `gmplot()`.
+
+```{r, plot2a, message = FALSE}
+gmplot(growthmodel)
+```
+
+More plotting options are exemplified in the package documentation and introduction [vignette](https://nschiett.github.io/fishgrowbot/articles/introduction.html).     
+
 
 # Acknowledgements
 

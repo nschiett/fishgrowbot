@@ -29,11 +29,11 @@ growthreg(
 \item{lmax}{Maximum size. Based on this value, maximum growth rate kmax
 will be computed.}
 
-\item{linf_m}{Prior for parameter linf.}
+\item{linf_m}{Prior for parameter linf, . (in cm)}
 
-\item{linf_sd}{Prior sd for linf (default set to 10\% of linf_m).}
+\item{linf_sd}{Prior sd for linf, asymptotic length (default set to 10\% of linf_m).}
 
-\item{l0_m}{Prior for l0.}
+\item{l0_m}{Prior for l0, size at hatching. (in cm)}
 
 \item{l0_sd}{Prior sd for l0 (default set to 10\% of l0_m).}
 
