@@ -15,9 +15,3 @@ paper/*.aux
 paper/*.bcf
 paper/*.out
 paper/*.xml
-
-src/fishgrowbot.so
-# cpp files
-src/*.o
-src/*.cc
-src/*.h

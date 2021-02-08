@@ -6,9 +6,9 @@
 #' (CAUTION: must be in cm).
 #' @param age \code{\link[base]{numeric}} vector with age.
 #' @param id \code{\link[base]{character}} vector with fish ID.
-#' @param linf_m Prior for parameter linf, . (in cm)
-#' @param linf_sd Prior sd for linf, asymptotic length (default set to 10% of linf_m).
-#' @param l0_m Prior for l0, size at hatching. (in cm)
+#' @param linf_m Prior for parameter linf.
+#' @param linf_sd Prior sd for linf (default set to 10% of linf_m).
+#' @param l0_m Prior for l0.
 #' @param l0_sd Prior sd for l0 (default set to 10% of l0_m).
 #' @param lmax Maximum size. Based on this value, maximum growth rate kmax
 #' will be computed.
