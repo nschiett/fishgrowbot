@@ -82,6 +82,25 @@ growthmodel <- growthreg(length = bc$lengths$l_m / 10, age =  bc$lengths$age,
 # summary growth parameters
 growthmodel$summary
 ```
+We can use existing packages `rstan` and `bayesplot` to make diagnostic plots. 
+
+```{r}
+library(rstan)
+library(bayesplot)
+# Posterior predictive check
+yrep <- extract(growthmodel$stanfit, "y_rep")$y_rep
+ppc_dens_overlay(y = bc$lengths$l_m / 10, yrep = yrep[1:100,])
+
+#trace plots
+posterior <- extract(growthmodel$stanfit, permuted = FALSE)
+
+p <- mcmc_trace(posterior,  pars = c("linf", "k"),
+                facet_args = list(nrow = 2, labeller = label_parsed))
+p + facet_text(size = 15)
+```
+
+
+
 
 Now we can visualize the fit with the function `gmplot()`.
 
