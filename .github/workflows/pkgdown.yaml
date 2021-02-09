@@ -39,8 +39,10 @@ jobs:
         shell: Rscript {0}
 
       - name: Install package
-        run: R CMD INSTALL .
-
+        run: |
+          devtools::install()
+        shell: Rscript {0}
+        
       - name: Deploy package
         run: |
           git config --local user.email "actions@github.com"
