@@ -10,7 +10,6 @@ docs
 ignore
 configure*
 
-paper/output
 paper/paper_cache
 paper/*.log
 paper/*.aux
