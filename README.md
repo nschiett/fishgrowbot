@@ -16,7 +16,7 @@ status](https://github.com/nschiett/fishgrowbot/workflows/R-CMD-check/badge.svg)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 [![Build
 Status](https://api.travis-ci.com/nschiett/fishgrowbot.svg?branch=master)](https://travis-ci.com/nschiett/fishgrowbot)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9-orange.svg)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-orange.svg)](commits/master)
 [![Ask Us Anything
 !](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishgrowbot/issues/new)
 ![Open Source
