@@ -72,7 +72,7 @@ Citation
 
       Nina M. D. Schiettekatte (2021). fishgrowbot: Fish Growth Curves Through
       Back-Calculation of Otoliths Rings in a Bayesian Framework. R package version
-      0.0.0.9. https://nschiett.github.io/fishgrowbot
+      0.1.0. https://nschiett.github.io/fishgrowbot
 
     A BibTeX entry for LaTeX users is
 
@@ -80,6 +80,6 @@ Citation
         title = {fishgrowbot: Fish Growth Curves Through Back-Calculation of Otoliths Rings in a Bayesian Framework},
         author = {Nina M. D. Schiettekatte},
         year = {2021},
-        note = {R package version 0.0.0.9},
+        note = {R package version 0.1.0},
         url = {https://nschiett.github.io/fishgrowbot},
       }
